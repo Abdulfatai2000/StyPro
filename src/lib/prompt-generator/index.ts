@@ -17,6 +17,7 @@ export function generateDesignPrompt({
 }: PromptGeneratorOptions): string {
   const isCustomized = getOverrideCount(overrides) > 0;
   const s = resolvedStyle;
+  const baseName = baseStyle.name;
 
   const agentHeader =
     targetAgent === 'antigravity'
@@ -49,7 +50,7 @@ ${Object.keys(overrides.typography || {}).length > 0 ? `- Custom Typography: Fon
 ${Object.keys(overrides.spacing || {}).length > 0 ? `- Custom Spacing: Layout and gaps adjusted` : ''}
 ${Object.keys(overrides.geometry || {}).length > 0 ? `- Custom Geometry: Corner radius and borders modified` : ''}
 All specifications below reflect these resolved custom values.`
-    : `This specification represents the canonical, unadulterated ${s.name} standard.`
+    : `This specification represents the canonical, unadulterated ${baseName} standard.`
 }
 
 ---
@@ -216,3 +217,4 @@ export const SystemTokens = {
 - ❌ **DO NOT** generate empty placeholder cards without clear typographic hierarchy.
 `;
 }
+
