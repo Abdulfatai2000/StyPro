@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, RotateCcw, SlidersHorizontal, Terminal } from 'lucide-react';
+import { ArrowLeft, RotateCcw, SlidersHorizontal, Terminal, Download } from 'lucide-react';
 import { DesignStyle } from '@/types/style';
 import { CustomizerTab } from '@/types/customizer';
 
@@ -82,6 +82,15 @@ export function CustomizerHeader({
 
         {/* Right: Actions */}
         <div className="flex items-center gap-3">
+          <Link
+            href={`/export/${style.slug}`}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-white/[0.1] bg-[#090A0F] text-[#F4F5F8] hover:bg-white/[0.04] transition-all"
+            title="Export CSS, Tailwind, JSON tokens, and Markdown"
+          >
+            <Download className="w-3.5 h-3.5 text-[#5E6AD2]" />
+            <span className="hidden sm:inline">Export</span>
+          </Link>
+
           {isDirty && (
             <button
               type="button"

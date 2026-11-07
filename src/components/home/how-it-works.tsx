@@ -49,9 +49,9 @@ export function HowItWorks() {
       description:
         'Download complete design artifacts: Tailwind CSS configurations, CSS custom properties, DTCG JSON tokens, and markdown specs.',
       icon: Download,
-      status: 'Coming Soon',
+      status: 'Available Now',
       phase: 'Phase 3',
-      isActive: false,
+      isActive: true,
     },
   ];
 

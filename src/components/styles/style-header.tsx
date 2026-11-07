@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { ArrowLeft, SlidersHorizontal, Sparkles, Download } from 'lucide-react';
 import { DesignStyle } from '@/types/style';
 
 interface StyleHeaderProps {
@@ -53,6 +53,14 @@ export function StyleHeader({ style }: StyleHeaderProps) {
           >
             <SlidersHorizontal className="w-4 h-4 text-[#5E6AD2]" />
             <span>Customize Style</span>
+          </Link>
+
+          <Link
+            href={`/export/${style.slug}`}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/[0.1] bg-[#090A0F] hover:bg-white/[0.04] text-[#F4F5F8] text-xs font-semibold transition-all"
+          >
+            <Download className="w-4 h-4 text-[#5E6AD2]" />
+            <span>Export Tokens</span>
           </Link>
 
           <a
