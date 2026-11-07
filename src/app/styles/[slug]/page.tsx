@@ -48,10 +48,10 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050506]">
+    <div className="flex flex-col min-h-screen bg-[#fcfcfd] text-[#16191f] font-sans">
       <Navbar />
 
-      <main className="flex-1 py-10 md:py-14 space-y-12">
+      <main className="flex-1 py-10 md:py-14 space-y-14">
         <PageContainer>
           {/* Style Header */}
           <StyleHeader style={style} />
@@ -60,12 +60,12 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
         {/* Live Preview System */}
         <PageContainer>
           <section id="live-preview" className="space-y-4 scroll-mt-24">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-[#F4F5F8]">
+                <h2 className="text-xl font-bold tracking-tight text-[#16191f] font-display">
                   Live Component Demonstration
                 </h2>
-                <p className="text-xs text-[#8C92A4]">
+                <p className="text-sm text-[#454c58] mt-0.5">
                   Realistic UI components rendered with {style.name} design tokens
                 </p>
               </div>
@@ -101,4 +101,3 @@ export default async function StyleDetailPage({ params }: StylePageProps) {
     </div>
   );
 }
-

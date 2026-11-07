@@ -51,24 +51,24 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
   };
 
   return (
-    <div className="space-y-8">
-      {/* Search & Filter Controls */}
-      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-xl border border-white/[0.08] bg-[#090A0F]">
+    <div className="space-y-6">
+      {/* Search & Filter Controls Panel */}
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-[12px] border border-[#dde0e6] bg-[#ffffff] shadow-xs">
         {/* Search Input */}
         <div className="relative flex-1">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8C92A4]" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#454c58]" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search styles by name, tags, or design philosophy..."
-            className="w-full pl-10 pr-9 py-2 rounded-lg bg-[#050506] border border-white/[0.08] text-sm text-[#F4F5F8] placeholder:text-[#636A7E] focus:outline-none focus:border-[#5E6AD2] focus:ring-1 focus:ring-[#5E6AD2] transition-colors"
+            className="w-full pl-10 pr-9 py-2.5 rounded-[8px] bg-[#fcfcfd] border border-[#dde0e6] text-sm text-[#16191f] placeholder:text-[#454c58]/70 focus:outline-none focus:border-[#074ce0] focus:ring-2 focus:ring-[#074ce0]/10 transition-all"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8C92A4] hover:text-[#F4F5F8]"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#454c58] hover:text-[#16191f]"
               aria-label="Clear search"
             >
               <X className="w-4 h-4" />
@@ -76,15 +76,15 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
           )}
         </div>
 
-        {/* Featured toggle & Reset */}
+        {/* Featured Toggle & Reset */}
         <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={() => setOnlyFeatured(!onlyFeatured)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium border transition-colors cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-[8px] text-xs font-semibold border transition-all cursor-pointer ${
               onlyFeatured
-                ? 'bg-[#10B981]/15 text-[#10B981] border-[#10B981]/30'
-                : 'bg-[#050506] text-[#9BA1B0] border-white/[0.08] hover:text-[#F4F5F8]'
+                ? 'bg-[#074ce0] text-white border-[#074ce0] shadow-xs'
+                : 'bg-white text-[#454c58] border-[#dde0e6] hover:bg-[#f3f4f6]'
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -95,7 +95,7 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
             <button
               type="button"
               onClick={handleResetFilters}
-              className="text-xs text-[#5E6AD2] hover:underline px-2 py-1"
+              className="text-xs font-semibold text-[#074ce0] hover:underline px-2 py-1"
             >
               Reset all
             </button>
@@ -104,7 +104,7 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
       </div>
 
       {/* Category Pills Bar */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
         {categories.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           return (
@@ -112,10 +112,10 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
               key={cat.id}
               type="button"
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
                 isSelected
-                  ? 'bg-[#5E6AD2] text-white shadow-[0_0_15px_rgba(94,106,210,0.4)]'
-                  : 'bg-white/[0.04] text-[#9BA1B0] hover:bg-white/[0.08] hover:text-[#F4F5F8] border border-white/[0.06]'
+                  ? 'bg-[#074ce0] text-white border-[#074ce0] shadow-xs'
+                  : 'bg-white text-[#454c58] hover:bg-[#f3f4f6] hover:text-[#16191f] border-[#dde0e6]'
               }`}
             >
               {cat.label}
@@ -124,14 +124,13 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
         })}
       </div>
 
-      {/* Results Header */}
-      <div className="flex items-center justify-between text-xs text-[#8C92A4]">
+      {/* Results Header Metadata */}
+      <div className="flex items-center justify-between text-xs text-[#454c58] py-1 border-b border-[#dde0e6]">
         <span>
-          Showing <strong className="text-[#F4F5F8]">{filteredStyles.length}</strong> design{' '}
-          {filteredStyles.length === 1 ? 'style' : 'styles'}
+          Showing <strong className="text-[#16191f] font-semibold">{filteredStyles.length}</strong> of {initialStyles.length} design styles
         </span>
         {hasActiveFilters && (
-          <span className="text-[#5E6AD2] font-mono">Filtered view</span>
+          <span className="text-[#074ce0] font-semibold">Filtered view</span>
         )}
       </div>
 
@@ -143,19 +142,20 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
           ))}
         </div>
       ) : (
-        <div className="py-16 text-center rounded-xl border border-dashed border-white/[0.12] bg-[#090A0F]/50 p-8 space-y-4">
-          <div className="w-12 h-12 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center mx-auto text-[#8C92A4]">
-            <Filter className="w-5 h-5" />
+        <div className="py-16 text-center rounded-[12px] border border-dashed border-[#dde0e6] bg-white p-8 space-y-4">
+          <div className="w-12 h-12 rounded-full bg-[#f3f4f6] flex items-center justify-center mx-auto text-[#454c58]">
+            <Filter className="w-5 h-5 text-[#074ce0]" />
           </div>
-          <h4 className="text-lg font-semibold text-[#F4F5F8]">No design styles match your filter</h4>
-          <p className="text-sm text-[#8C92A4] max-w-md mx-auto">
-            We couldn’t find any styles matching &ldquo;{searchQuery}&rdquo; in the selected category.
-            Try adjusting your search terms or clearing active filters.
+          <h4 className="text-base font-bold text-[#16191f]">
+            No matching design styles found
+          </h4>
+          <p className="text-sm text-[#454c58] max-w-md mx-auto">
+            Zero records match query &ldquo;{searchQuery}&rdquo; within the specified category.
           </p>
           <button
             type="button"
             onClick={handleResetFilters}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#5E6AD2] text-white text-xs font-medium hover:bg-[#6E79D8] transition-colors"
+            className="btn-primary"
           >
             Clear Active Filters
           </button>
@@ -164,4 +164,3 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
     </div>
   );
 }
-

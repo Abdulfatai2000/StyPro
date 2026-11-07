@@ -20,7 +20,7 @@ export function StylePalette({ style }: StylePaletteProps) {
 
   const tokenGroups = [
     {
-      group: 'Base Surfaces & Canvas',
+      group: 'Surfaces & Canvas',
       tokens: [
         { name: 'background', label: 'Background', value: style.colors.background },
         { name: 'surface', label: 'Surface', value: style.colors.surface },
@@ -29,7 +29,7 @@ export function StylePalette({ style }: StylePaletteProps) {
       ],
     },
     {
-      group: 'Primary Brand & Accents',
+      group: 'Primary Actions & Accents',
       tokens: [
         { name: 'primary', label: 'Primary', value: style.colors.primary },
         { name: 'primaryHover', label: 'Primary Hover', value: style.colors.primaryHover },
@@ -38,7 +38,7 @@ export function StylePalette({ style }: StylePaletteProps) {
       ],
     },
     {
-      group: 'Borders & Structure',
+      group: 'Borders & Rules',
       tokens: [
         { name: 'border', label: 'Border Default', value: style.colors.border },
         { name: 'borderSubtle', label: 'Border Subtle', value: style.colors.borderSubtle },
@@ -57,27 +57,27 @@ export function StylePalette({ style }: StylePaletteProps) {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 font-sans">
+      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
         <div>
-          <h3 className="text-lg font-semibold text-[#F4F5F8]">Semantic Colour Tokens</h3>
-          <p className="text-xs text-[#8C92A4]">
-            Click any color token to copy its value to clipboard
+          <h3 className="text-xl font-bold text-[#16191f] font-display">Semantic Color Tokens</h3>
+          <p className="text-sm text-[#454c58] mt-0.5">
+            Click any color swatch to copy its raw hex value to your clipboard
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {tokenGroups.map((group, gIdx) => (
           <div
             key={gIdx}
-            className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-5 space-y-4"
+            className="software-card p-5 space-y-3.5 bg-white"
           >
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#5E6AD2] font-mono">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
               {group.group}
             </h4>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {group.tokens.map((token) => {
                 const isCopied = copiedToken === token.name;
                 return (
@@ -85,29 +85,29 @@ export function StylePalette({ style }: StylePaletteProps) {
                     key={token.name}
                     type="button"
                     onClick={() => copyToClipboard(token.name, token.value)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg border border-white/[0.04] bg-[#050506] hover:border-white/[0.12] hover:bg-white/[0.02] transition-all text-left group cursor-pointer"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg border border-[#dde0e6] bg-[#fcfcfd] hover:bg-[#f3f4f6] hover:border-[#074ce0] transition-colors text-left cursor-pointer group"
+                    title={`Copy ${token.name} value`}
                   >
-                    <div className="flex items-center gap-3">
-                      {/* Color Preview Block */}
+                    <div className="flex items-center gap-2.5 min-w-0">
                       <div
-                        className="w-7 h-7 rounded border border-white/[0.15] shadow-sm shrink-0"
+                        className="w-5 h-5 rounded border border-black/10 shadow-xs shrink-0"
                         style={{ backgroundColor: token.value }}
                       />
-                      <div className="truncate">
-                        <span className="block text-xs font-medium text-[#F4F5F8]">
+                      <div className="min-w-0">
+                        <div className="text-xs font-semibold text-[#16191f] truncate">
                           {token.label}
-                        </span>
-                        <span className="block text-[11px] font-mono text-[#8C92A4]">
+                        </div>
+                        <div className="text-[11px] text-[#454c58] font-mono">
                           {formatColor(token.value)}
-                        </span>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="text-[#8C92A4] group-hover:text-[#F4F5F8] transition-colors pl-2">
+                    <div className="shrink-0 text-[#454c58] group-hover:text-[#074ce0] transition-colors">
                       {isCopied ? (
-                        <Check className="w-3.5 h-3.5 text-[#10B981]" />
+                        <Check className="w-3.5 h-3.5 text-emerald-600" />
                       ) : (
-                        <Copy className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100" />
+                        <Copy className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" />
                       )}
                     </div>
                   </button>
@@ -120,4 +120,3 @@ export function StylePalette({ style }: StylePaletteProps) {
     </div>
   );
 }
-

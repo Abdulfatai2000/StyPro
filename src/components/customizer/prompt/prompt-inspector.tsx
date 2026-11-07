@@ -66,21 +66,21 @@ export function PromptInspector({
   const tokenEstimate = Math.round(charCount / 4);
 
   return (
-    <div className="rounded-xl border border-white/[0.12] bg-[#090A0F] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.6)] space-y-0">
+    <div className="rounded-xl border border-[#dde0e6] bg-white overflow-hidden shadow-sm space-y-0 font-sans">
       {/* Top Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 border-b border-white/[0.08] bg-[#0D0F17]">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#5E6AD2]/15 border border-[#5E6AD2]/30 flex items-center justify-center text-[#5E6AD2]">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 border-b border-[#dde0e6] bg-[#fcfcfd]">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-lg bg-[#074ce0]/10 border border-[#074ce0]/20 flex items-center justify-center text-[#074ce0]">
             <Terminal className="w-4 h-4" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-[#F4F5F8]">Design System AI Prompt</h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#10B981]/10 text-[#10B981] border border-[#10B981]/25">
+              <h3 className="text-base font-bold text-[#16191f] font-display">Design System AI Prompt</h3>
+              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
                 Deterministic
               </span>
             </div>
-            <p className="text-xs text-[#8C92A4]">
+            <p className="text-xs text-[#454c58] mt-0.5">
               Structured markdown specification ready for direct injection into coding agents.
             </p>
           </div>
@@ -91,10 +91,8 @@ export function PromptInspector({
           <button
             type="button"
             onClick={() => setIsEditing(!isEditing)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
-              isEditing
-                ? 'bg-[#5E6AD2]/20 border-[#5E6AD2] text-white'
-                : 'bg-[#050506] border-white/[0.08] text-[#9BA1B0] hover:text-white'
+            className={`btn-secondary text-xs !py-1.5 !px-3 ${
+              isEditing ? '!border-[#074ce0] !text-[#074ce0]' : ''
             }`}
           >
             {isEditing ? <Eye className="w-3.5 h-3.5" /> : <Edit3 className="w-3.5 h-3.5" />}
@@ -104,7 +102,7 @@ export function PromptInspector({
           <button
             type="button"
             onClick={() => handleRegenerate()}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-white/[0.08] bg-[#050506] text-[#9BA1B0] hover:text-white transition-all cursor-pointer"
+            className="btn-secondary text-xs !py-1.5 !px-3"
             title="Regenerate with current active tokens"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -114,32 +112,32 @@ export function PromptInspector({
           <button
             type="button"
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-[#5E6AD2] hover:bg-[#6E79D8] text-white transition-all shadow-[0_0_15px_rgba(94,106,210,0.3)] cursor-pointer"
+            className="btn-primary text-xs !py-1.5 !px-3"
           >
             {isCopied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-            <span>{isCopied ? 'Copied to Clipboard!' : 'Copy Entire Prompt'}</span>
+            <span>{isCopied ? 'Copied Prompt!' : 'Copy Entire Prompt'}</span>
           </button>
         </div>
       </div>
 
       {/* Target Agent Selector Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-white/[0.06] bg-[#050506] text-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-[#dde0e6] bg-[#fcfcfd] text-xs">
         <div className="flex items-center gap-2">
-          <span className="text-[#8C92A4] font-mono text-[11px]">Format Target:</span>
-          <div className="flex items-center gap-1 bg-[#090A0F] p-0.5 rounded border border-white/[0.08]">
+          <span className="text-[#454c58] font-medium text-xs">Format Target:</span>
+          <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
             {[
               { id: 'antigravity', label: 'Google Antigravity' },
-              { id: 'cursor', label: 'Cursor AI / Composer' },
+              { id: 'cursor', label: 'Cursor AI' },
               { id: 'claude-code', label: 'Claude Code' },
             ].map((agent) => (
               <button
                 key={agent.id}
                 type="button"
                 onClick={() => handleAgentSelect(agent.id as 'antigravity' | 'cursor' | 'claude-code')}
-                className={`px-2.5 py-1 rounded text-xs transition-colors cursor-pointer ${
+                className={`px-3 py-1 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
                   selectedAgent === agent.id
-                    ? 'bg-[#151824] text-white font-medium'
-                    : 'text-[#8C92A4] hover:text-white'
+                    ? 'bg-[#074ce0] text-white shadow-xs'
+                    : 'text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {agent.label}
@@ -148,7 +146,7 @@ export function PromptInspector({
           </div>
         </div>
 
-        <div className="flex items-center gap-4 text-[11px] font-mono text-[#636A7E]">
+        <div className="flex items-center gap-4 text-xs font-mono text-[#454c58]">
           <span>Words: {wordCount}</span>
           <span>Chars: {charCount}</span>
           <span>Tokens: ~{tokenEstimate}</span>
@@ -156,18 +154,18 @@ export function PromptInspector({
       </div>
 
       {/* Content Area: View or Edit */}
-      <div className="p-4 bg-[#050506]">
+      <div className="p-4 bg-[#f8f9fa]">
         {isEditing ? (
           <textarea
             value={promptText}
             onChange={(e) => setPromptText(e.target.value)}
             rows={22}
-            className="w-full p-4 font-mono text-xs leading-relaxed rounded-lg border border-white/[0.1] bg-[#090A0F] text-[#F4F5F8] focus:border-[#5E6AD2] focus:outline-none resize-y"
+            className="w-full p-4 font-mono text-xs leading-relaxed rounded-lg border border-[#dde0e6] bg-white text-[#16191f] focus:border-[#074ce0] focus:ring-1 focus:ring-[#074ce0] focus:outline-none resize-y"
             placeholder="Edit prompt specification..."
           />
         ) : (
           <div className="relative">
-            <pre className="w-full max-h-[540px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-white/[0.08] bg-[#090A0F] text-[#E2E4ED] whitespace-pre-wrap selection:bg-[#5E6AD2]/30">
+            <pre className="w-full max-h-[540px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-[#dde0e6] bg-[#16191f] text-[#fcfcfd] whitespace-pre-wrap selection:bg-[#074ce0]/40">
               {promptText}
             </pre>
           </div>
@@ -175,18 +173,17 @@ export function PromptInspector({
       </div>
 
       {/* Bottom Footer Tip */}
-      <div className="px-4 py-3 border-t border-white/[0.06] bg-[#0D0F17] flex items-center justify-between text-[11px] text-[#8C92A4]">
+      <div className="px-4 py-3 border-t border-[#dde0e6] bg-[#fcfcfd] flex items-center justify-between text-xs text-[#454c58]">
         <div className="flex items-center gap-1.5">
-          <Bot className="w-3.5 h-3.5 text-[#5E6AD2]" />
+          <Bot className="w-4 h-4 text-[#074ce0]" />
           <span>
-            Paste this directly into the system prompt or conversation with your coding assistant.
+            Paste this directly into the instructions or prompt with your coding assistant.
           </span>
         </div>
-        <span className="font-mono text-[#636A7E]">
-          Generated from resolved {resolvedStyle.name} tokens
+        <span className="font-mono text-xs text-[#454c58]">
+          Derived from {resolvedStyle.name} tokens
         </span>
       </div>
     </div>
   );
 }
-

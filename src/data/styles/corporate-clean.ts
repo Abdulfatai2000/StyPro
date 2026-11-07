@@ -178,3 +178,4 @@ export const corporateClean: DesignStyle = {
     },
   },
 };
+

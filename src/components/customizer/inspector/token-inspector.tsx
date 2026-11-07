@@ -28,45 +28,45 @@ export function TokenInspector({
   }));
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 font-sans">
       {/* Customization Status Card */}
-      <div className="p-4 rounded-xl border border-white/[0.08] bg-[#090A0F] space-y-3">
+      <div className="software-card p-4 space-y-3 bg-white">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-mono uppercase tracking-wider text-[#8C92A4]">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[#454c58]">
             Customization State
           </span>
           <span
-            className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
+            className={`text-xs px-2.5 py-0.5 rounded-full border font-semibold ${
               isCustomized
-                ? 'border-[#5E6AD2]/40 bg-[#5E6AD2]/10 text-[#5E6AD2]'
-                : 'border-white/[0.08] bg-white/[0.02] text-[#8C92A4]'
+                ? 'border-[#074ce0]/20 bg-[#074ce0]/10 text-[#074ce0]'
+                : 'border-[#dde0e6] bg-[#f3f4f6] text-[#454c58]'
             }`}
           >
             {isCustomized ? `${overrideCount} Active Override${overrideCount === 1 ? '' : 's'}` : 'Original Presets'}
           </span>
         </div>
 
-        <p className="text-xs text-[#8C92A4] leading-relaxed">
+        <p className="text-xs text-[#454c58] leading-relaxed">
           {isCustomized
             ? 'Modifications are merged into the live preview canvas and stored in your browser session.'
             : 'Using canonical design system tokens. Customize colors, fonts, or geometry on the left.'}
         </p>
 
         {isCustomized && modifiedColors.length > 0 && (
-          <div className="pt-2 border-t border-white/[0.06] space-y-2">
-            <span className="text-[11px] font-mono text-[#F4F5F8] block">
+          <div className="pt-2 border-t border-[#dde0e6] space-y-2">
+            <span className="text-xs font-semibold text-[#16191f] block">
               Modified Tokens Diff:
             </span>
             <div className="space-y-1.5 max-h-36 overflow-y-auto pr-1">
               {modifiedColors.map((item) => (
                 <div
                   key={item.token}
-                  className="flex items-center justify-between text-[11px] font-mono p-1.5 rounded bg-[#050506] border border-white/[0.04]"
+                  className="flex items-center justify-between text-xs font-mono p-2 rounded-lg bg-[#f3f4f6] border border-[#dde0e6]"
                 >
-                  <span className="text-[#9BA1B0] truncate max-w-[90px]">{item.token}</span>
+                  <span className="text-[#16191f] font-medium truncate max-w-[90px]">{item.token}</span>
                   <div className="flex items-center gap-1.5 shrink-0">
-                    <span className="line-through text-[#636A7E]">{item.original}</span>
-                    <span className="text-[#5E6AD2] font-semibold">{item.custom}</span>
+                    <span className="line-through text-[#454c58]">{item.original}</span>
+                    <span className="text-[#074ce0] font-semibold">{item.custom}</span>
                   </div>
                 </div>
               ))}
@@ -76,21 +76,21 @@ export function TokenInspector({
       </div>
 
       {/* Prompt CTA Card */}
-      <div className="p-4 rounded-xl border border-[#5E6AD2]/30 bg-[#5E6AD2]/5 space-y-3 shadow-[0_0_20px_rgba(94,106,210,0.08)]">
-        <div className="flex items-center gap-2 text-xs font-mono text-[#5E6AD2]">
+      <div className="software-card p-5 space-y-3 bg-white border border-[#074ce0]/20 shadow-sm">
+        <div className="flex items-center gap-2 text-xs font-semibold text-[#074ce0]">
           <Terminal className="w-4 h-4" />
           <span>Ready to Build?</span>
         </div>
-        <h4 className="text-sm font-bold text-[#F4F5F8]">
+        <h4 className="text-sm font-bold text-[#16191f] font-display">
           Generate AI Coding Prompt
         </h4>
-        <p className="text-xs text-[#8C92A4] leading-relaxed">
+        <p className="text-xs text-[#454c58] leading-relaxed">
           Transform your customized tokens into an implementation prompt for Antigravity, Cursor, or Claude Code.
         </p>
         <button
           type="button"
           onClick={onOpenPrompt}
-          className="w-full py-2 px-3 rounded-lg bg-[#5E6AD2] hover:bg-[#6E79D8] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm"
+          className="btn-primary w-full text-xs !py-2 justify-center"
         >
           <span>Generate Design Prompt</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -98,24 +98,24 @@ export function TokenInspector({
       </div>
 
       {/* Style Design Philosophy Card */}
-      <div className="p-4 rounded-xl border border-white/[0.08] bg-[#090A0F] space-y-3">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#9BA1B0]">
-          <Sparkles className="w-3.5 h-3.5 text-[#5E6AD2]" />
+      <div className="software-card p-4 space-y-3 bg-white">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
+          <Sparkles className="w-3.5 h-3.5" />
           <span>Design Guidance</span>
         </div>
-        <h4 className="text-xs font-bold text-[#F4F5F8]">
+        <h4 className="text-xs font-bold text-[#16191f]">
           {baseStyle.philosophy.direction}
         </h4>
-        <p className="text-xs text-[#8C92A4] leading-relaxed">
+        <p className="text-xs text-[#454c58] leading-relaxed">
           {baseStyle.philosophy.intendedAtmosphere}
         </p>
-        <div className="pt-2 border-t border-white/[0.06] space-y-1.5">
-          <span className="text-[11px] font-semibold text-[#F4F5F8] block">
+        <div className="pt-2 border-t border-[#dde0e6] space-y-1.5">
+          <span className="text-xs font-semibold text-[#16191f] block">
             Best Suited For:
           </span>
           {baseStyle.philosophy.recommendedUseCases.slice(0, 3).map((useCase, idx) => (
-            <div key={idx} className="flex items-center gap-1.5 text-[11px] text-[#8C92A4]">
-              <CheckCircle2 className="w-3 h-3 text-[#10B981] shrink-0" />
+            <div key={idx} className="flex items-center gap-1.5 text-xs text-[#454c58]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
               <span>{useCase}</span>
             </div>
           ))}
@@ -124,4 +124,3 @@ export function TokenInspector({
     </div>
   );
 }
-

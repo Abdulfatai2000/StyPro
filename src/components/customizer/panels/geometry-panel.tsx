@@ -29,12 +29,12 @@ export function GeometryPanel({
   const currentShadow = geometryOverrides.shadowLevel || 'md';
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-sans">
       {/* Category Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
         <div>
-          <h3 className="text-sm font-bold text-[#F4F5F8]">Geometry & Elevation</h3>
-          <p className="text-xs text-[#8C92A4]">
+          <h3 className="text-base font-bold text-[#16191f] font-display">Geometry & Elevation</h3>
+          <p className="text-xs text-[#454c58] mt-0.5">
             Tune corner rounding, border thickness, and shadow depth.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function GeometryPanel({
           <button
             type="button"
             onClick={onResetCategory}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono text-[#5E6AD2] hover:text-white bg-[#5E6AD2]/10 hover:bg-[#5E6AD2]/20 rounded border border-[#5E6AD2]/30 transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#074ce0] hover:text-white bg-[#074ce0]/10 hover:bg-[#074ce0] rounded-md border border-[#074ce0]/30 transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset Geometry</span>
@@ -54,8 +54,8 @@ export function GeometryPanel({
         {/* General Corner Radius */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-medium text-[#F4F5F8]">General Border Radius</span>
-            <span className="font-mono text-[#5E6AD2]">{currentGeneralRadius}</span>
+            <span className="font-semibold text-[#16191f]">General Border Radius</span>
+            <span className="font-mono text-[#074ce0] font-bold">{currentGeneralRadius}</span>
           </div>
           <div className="grid grid-cols-6 gap-1.5">
             {['0px', '4px', '6px', '8px', '12px', '9999px'].map((r) => (
@@ -63,10 +63,10 @@ export function GeometryPanel({
                 key={r}
                 type="button"
                 onClick={() => onChange({ borderRadiusGeneral: r })}
-                className={`py-1.5 text-xs font-mono rounded border transition-all cursor-pointer ${
+                className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentGeneralRadius === r
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/15 text-white font-bold'
-                    : 'border-white/[0.08] bg-[#050506] text-[#8C92A4] hover:text-white'
+                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
+                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {r === '9999px' ? 'Pill' : r}
@@ -78,8 +78,8 @@ export function GeometryPanel({
         {/* Button Radius */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-medium text-[#F4F5F8]">Button Corner Radius</span>
-            <span className="font-mono text-[#5E6AD2]">{currentButtonRadius}</span>
+            <span className="font-semibold text-[#16191f]">Button Corner Radius</span>
+            <span className="font-mono text-[#074ce0] font-bold">{currentButtonRadius}</span>
           </div>
           <div className="grid grid-cols-5 gap-2">
             {['0px', '4px', '6px', '8px', '9999px'].map((r) => (
@@ -87,10 +87,10 @@ export function GeometryPanel({
                 key={r}
                 type="button"
                 onClick={() => onChange({ buttonRadius: r })}
-                className={`py-1.5 text-xs font-mono rounded border transition-all cursor-pointer ${
+                className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentButtonRadius === r
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/15 text-white font-bold'
-                    : 'border-white/[0.08] bg-[#050506] text-[#8C92A4] hover:text-white'
+                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
+                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {r === '9999px' ? 'Pill' : r}
@@ -102,8 +102,8 @@ export function GeometryPanel({
         {/* Card Radius */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-medium text-[#F4F5F8]">Card Corner Radius</span>
-            <span className="font-mono text-[#5E6AD2]">{currentCardRadius}</span>
+            <span className="font-semibold text-[#16191f]">Card Corner Radius</span>
+            <span className="font-mono text-[#074ce0] font-bold">{currentCardRadius}</span>
           </div>
           <div className="grid grid-cols-5 gap-2">
             {['0px', '4px', '8px', '12px', '16px'].map((r) => (
@@ -111,10 +111,10 @@ export function GeometryPanel({
                 key={r}
                 type="button"
                 onClick={() => onChange({ cardRadius: r })}
-                className={`py-1.5 text-xs font-mono rounded border transition-all cursor-pointer ${
+                className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentCardRadius === r
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/15 text-white font-bold'
-                    : 'border-white/[0.08] bg-[#050506] text-[#8C92A4] hover:text-white'
+                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
+                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {r}
@@ -126,8 +126,8 @@ export function GeometryPanel({
         {/* Border Thickness */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-medium text-[#F4F5F8]">Border Thickness</span>
-            <span className="font-mono text-[#5E6AD2]">{currentThickness}</span>
+            <span className="font-semibold text-[#16191f]">Border Thickness</span>
+            <span className="font-mono text-[#074ce0] font-bold">{currentThickness}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['1px', '1.5px', '2px', '3px'].map((t) => (
@@ -135,10 +135,10 @@ export function GeometryPanel({
                 key={t}
                 type="button"
                 onClick={() => onChange({ borderThickness: t })}
-                className={`py-1.5 text-xs font-mono rounded border transition-all cursor-pointer ${
+                className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentThickness === t
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/15 text-white font-bold'
-                    : 'border-white/[0.08] bg-[#050506] text-[#8C92A4] hover:text-white'
+                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
+                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {t}
@@ -149,7 +149,7 @@ export function GeometryPanel({
 
         {/* Shadow Elevation */}
         <div className="space-y-2">
-          <label className="block text-xs font-medium text-[#F4F5F8]">
+          <label className="block text-xs font-semibold text-[#16191f]">
             Shadow Elevation & Depth
           </label>
           <div className="grid grid-cols-5 gap-1.5">
@@ -164,10 +164,10 @@ export function GeometryPanel({
                 key={s.id}
                 type="button"
                 onClick={() => onChange({ shadowLevel: s.id as 'none' | 'sm' | 'md' | 'lg' | 'colored' })}
-                className={`py-1.5 text-[11px] rounded border transition-all cursor-pointer ${
+                className={`py-2 text-xs font-medium rounded-md border transition-colors cursor-pointer ${
                   currentShadow === s.id
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/15 text-white font-medium'
-                    : 'border-white/[0.08] bg-[#050506] text-[#8C92A4] hover:text-white'
+                    ? 'border-[#074ce0] bg-[#074ce0] text-white'
+                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 {s.label}
@@ -179,4 +179,3 @@ export function GeometryPanel({
     </div>
   );
 }
-

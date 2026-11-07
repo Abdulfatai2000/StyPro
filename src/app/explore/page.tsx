@@ -15,21 +15,23 @@ export default function ExplorePage() {
   const styles = getAllStyles();
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050506]">
+    <div className="flex flex-col min-h-screen bg-[#fcfcfd] text-[#16191f] font-sans">
       <Navbar />
 
       <main className="flex-1 py-12 md:py-16">
         <PageContainer>
-          {/* Header */}
-          <div className="max-w-3xl mb-10 space-y-3">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-[#5E6AD2]/30 bg-[#5E6AD2]/10 text-xs font-medium text-[#5E6AD2]">
-              Design System Catalogue
+          <div className="mb-10 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#dde0e6] bg-[#f3f4f6] text-xs font-semibold text-[#074ce0]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+              <span>Curated Style Catalogue</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F4F5F8]">
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#16191f] font-display leading-[1.15]">
               Explore Design Styles
             </h1>
-            <p className="text-base text-[#8C92A4] leading-relaxed">
-              Discover production-grade UI design systems tailored for engineering platforms, editorial publications, and SaaS dashboards. Inspect their semantic tokens and live interactive components.
+
+            <p className="text-base text-[#454c58] max-w-2xl leading-[1.6]">
+              Discover 12 production-grade UI design systems tailored for engineering platforms, fintech portals, neo-brutalist brands, and editorial publications. Inspect their semantic tokens, live component specimens, and export code directly.
             </p>
           </div>
 
@@ -42,4 +44,3 @@ export default function ExplorePage() {
     </div>
   );
 }
-

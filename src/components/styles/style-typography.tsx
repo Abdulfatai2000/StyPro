@@ -8,9 +8,9 @@ interface StyleTypographyProps {
 
 export function StyleTypography({ style }: StyleTypographyProps) {
   const fontFamilies = [
-    { label: 'Display & Heading', value: style.typography.headingFont },
-    { label: 'Body & Paragraph', value: style.typography.bodyFont },
-    { label: 'Monospace & Telemetry', value: style.typography.monospaceFont },
+    { label: 'Display & Heading Font', value: style.typography.headingFont },
+    { label: 'Body & Paragraph Font', value: style.typography.bodyFont },
+    { label: 'Monospace & Code Font', value: style.typography.monospaceFont },
   ];
 
   const specimens = [
@@ -49,11 +49,11 @@ export function StyleTypography({ style }: StyleTypographyProps) {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-6 font-sans">
+      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
         <div>
-          <h3 className="text-lg font-semibold text-[#F4F5F8]">Typography System</h3>
-          <p className="text-xs text-[#8C92A4]">
+          <h3 className="text-xl font-bold text-[#16191f] font-display">Typography Hierarchy</h3>
+          <p className="text-sm text-[#454c58] mt-0.5">
             Modular scale, weight hierarchy, and font stacks
           </p>
         </div>
@@ -64,13 +64,13 @@ export function StyleTypography({ style }: StyleTypographyProps) {
         {fontFamilies.map((font, idx) => (
           <div
             key={idx}
-            className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-4 space-y-1.5"
+            className="software-card p-5 space-y-1.5 bg-white"
           >
-            <div className="flex items-center gap-2 text-xs font-mono text-[#5E6AD2]">
-              <Type className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#074ce0]">
+              <Type className="w-4 h-4" />
               <span>{font.label}</span>
             </div>
-            <p className="text-xs font-mono text-[#F4F5F8] truncate" title={font.value}>
+            <p className="text-sm font-semibold text-[#16191f] truncate" title={font.value}>
               {font.value}
             </p>
           </div>
@@ -78,34 +78,28 @@ export function StyleTypography({ style }: StyleTypographyProps) {
       </div>
 
       {/* Typography Specimen Ladder */}
-      <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-6 divide-y divide-white/[0.06]">
-        {specimens.map((item, idx) => (
-          <div
-            key={idx}
-            className={`flex flex-col md:flex-row md:items-baseline justify-between gap-4 ${
-              idx > 0 ? 'pt-6' : ''
-            }`}
-          >
-            <div className="w-36 shrink-0">
-              <span className="block text-xs font-mono text-[#5E6AD2]">{item.level}</span>
-              <span className="block text-[11px] font-mono text-[#8C92A4]">
-                {item.size} / w{item.weight}
+      <div className="software-card bg-white overflow-hidden divide-y divide-[#dde0e6]">
+        {specimens.map((spec, sIdx) => (
+          <div key={sIdx} className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="md:w-48 shrink-0 space-y-0.5">
+              <span className="text-xs font-bold text-[#074ce0] uppercase tracking-wide">
+                {spec.level}
               </span>
+              <div className="text-xs text-[#454c58]">
+                {spec.size} · weight {spec.weight}
+              </div>
             </div>
 
-            <div className="flex-1">
-              <p
-                style={{
-                  fontSize: item.size,
-                  fontWeight: item.weight,
-                  fontFamily: item.isMono ? style.typography.monospaceFont : style.typography.headingFont,
-                  letterSpacing: style.typography.letterSpacing.tight,
-                  color: '#F4F5F8',
-                }}
-                className="leading-snug"
-              >
-                {item.sample}
-              </p>
+            <div
+              className="flex-1 overflow-hidden"
+              style={{
+                fontFamily: spec.isMono ? style.typography.monospaceFont : style.typography.headingFont,
+                fontSize: spec.size,
+                fontWeight: spec.weight,
+                color: '#16191f',
+              }}
+            >
+              <div className="truncate">{spec.sample}</div>
             </div>
           </div>
         ))}
@@ -113,4 +107,3 @@ export function StyleTypography({ style }: StyleTypographyProps) {
     </div>
   );
 }
-

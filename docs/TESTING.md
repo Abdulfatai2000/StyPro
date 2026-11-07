@@ -94,3 +94,4 @@ npm run lint
 npm run build
 ```
 *Expected: Next.js Turbopack compiles successfully and prerenders all 44 static routes.*
+

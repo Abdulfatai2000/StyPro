@@ -8,7 +8,7 @@ interface StyleCardProps {
 }
 
 export function StyleCard({ style }: StyleCardProps) {
-  // Compute initials dynamically (e.g. "Modern Dark" -> "MD", "Paper & Ink" -> "PI")
+  // Compute initials dynamically (e.g. "Corporate Clean" -> "CC")
   const initials = style.name
     .replace(/[^a-zA-Z0-9 ]/g, '')
     .split(' ')
@@ -28,29 +28,29 @@ export function StyleCard({ style }: StyleCardProps) {
   ];
 
   return (
-    <div className="group relative flex flex-col rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 transition-all duration-200 hover:border-[#5E6AD2]/50 hover:shadow-[0_8px_30px_rgba(94,106,210,0.12)]">
+    <div className="software-card group relative flex flex-col p-6 transition-all duration-160">
       {/* Top Header */}
-      <div className="flex items-start justify-between gap-3 mb-4">
+      <div className="flex items-start justify-between gap-3 mb-3.5">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#5E6AD2] bg-[#5E6AD2]/10 px-2 py-0.5 rounded border border-[#5E6AD2]/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[12px] font-semibold text-[#074ce0] bg-[#074ce0]/10 px-2.5 py-0.5 rounded-full border border-[#074ce0]/20">
               {style.category}
             </span>
             {style.isFeatured && (
-              <span className="text-[10px] font-medium text-[#10B981] bg-[#10B981]/10 px-1.5 py-0.5 rounded flex items-center gap-1 border border-[#10B981]/20">
+              <span className="text-[11px] font-medium text-[#10b981] bg-[#10b981]/10 px-2 py-0.5 rounded-full flex items-center gap-1 border border-[#10b981]/20">
                 <Sparkles className="w-3 h-3" />
                 Featured
               </span>
             )}
           </div>
-          <h3 className="text-xl font-bold tracking-tight text-[#F4F5F8] group-hover:text-white transition-colors">
+          <h3 className="text-xl font-bold tracking-tight text-[#16191f] group-hover:text-[#074ce0] transition-colors font-display">
             {style.name}
           </h3>
         </div>
 
         {/* Visual Miniature Badge */}
         <div
-          className="w-8 h-8 rounded-md flex items-center justify-center text-xs font-bold border shadow-sm transition-transform group-hover:scale-105"
+          className="w-9 h-9 rounded-[8px] flex items-center justify-center text-xs font-bold border shadow-xs transition-transform duration-160 group-hover:scale-105 shrink-0"
           style={{
             backgroundColor: style.colors.primary,
             color: style.colors.primaryForeground,
@@ -62,20 +62,20 @@ export function StyleCard({ style }: StyleCardProps) {
       </div>
 
       {/* Description */}
-      <p className="text-sm text-[#8C92A4] leading-relaxed mb-5 line-clamp-2">
+      <p className="text-sm text-[#454c58] leading-relaxed mb-4 line-clamp-2 font-body">
         {style.description}
       </p>
 
       {/* Mini Color Palette Swatches */}
-      <div className="mb-5 space-y-1.5">
-        <span className="text-[11px] uppercase tracking-wider font-mono text-[#636A7E]">
-          Palette Tokens
+      <div className="mb-4 space-y-1.5">
+        <span className="text-[11px] uppercase tracking-wider font-semibold text-[#454c58]/80 block">
+          Palette Swatches
         </span>
         <div className="flex items-center gap-1.5">
           {palettePreview.map((c, i) => (
             <div
               key={i}
-              className="flex-1 h-7 rounded border border-white/[0.1] transition-transform hover:scale-105 relative group/swatch"
+              className="flex-1 h-6 rounded-[6px] border border-[#dde0e6] relative group/swatch transition-transform duration-160 hover:scale-105"
               style={{ backgroundColor: c.hex }}
               title={`${c.label}: ${c.hex}`}
             >
@@ -90,7 +90,7 @@ export function StyleCard({ style }: StyleCardProps) {
         {style.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="text-[11px] text-[#9BA1B0] bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.06]"
+            className="text-[12px] text-[#454c58] bg-[#f3f4f6] px-2.5 py-0.5 rounded-md border border-[#dde0e6]"
           >
             {tag}
           </span>
@@ -98,19 +98,19 @@ export function StyleCard({ style }: StyleCardProps) {
       </div>
 
       {/* Card Footer Actions */}
-      <div className="mt-auto pt-4 border-t border-white/[0.06] flex items-center justify-between">
+      <div className="mt-auto pt-4 border-t border-[#dde0e6] flex items-center justify-between">
         <Link
           href={`/styles/${style.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5E6AD2] hover:text-[#6E79D8] transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#074ce0] hover:underline transition-colors"
         >
-          <span>Explore</span>
-          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+          <span>Explore System</span>
+          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-160 group-hover:translate-x-0.5" />
         </Link>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Link
             href={`/customize/${style.slug}`}
-            className="text-[11px] font-mono text-[#8C92A4] hover:text-[#5E6AD2] flex items-center gap-1 transition-colors"
+            className="text-xs font-medium text-[#454c58] hover:text-[#074ce0] bg-[#f3f4f6] hover:bg-[#e9ecf2] px-2.5 py-1 rounded-[6px] flex items-center gap-1 transition-colors"
             title="Open Visual Customizer"
           >
             <SlidersHorizontal className="w-3 h-3" />
@@ -119,8 +119,8 @@ export function StyleCard({ style }: StyleCardProps) {
 
           <Link
             href={`/export/${style.slug}`}
-            className="text-[11px] font-mono text-[#8C92A4] hover:text-[#10B981] flex items-center gap-1 transition-colors"
-            title="Export Design Tokens & Code"
+            className="text-xs font-medium text-[#074ce0] bg-[#074ce0]/10 hover:bg-[#074ce0]/15 px-2.5 py-1 rounded-[6px] flex items-center gap-1 transition-colors"
+            title="Export Tokens"
           >
             <Download className="w-3 h-3" />
             <span>Export</span>

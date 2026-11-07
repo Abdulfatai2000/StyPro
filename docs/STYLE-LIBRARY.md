@@ -108,3 +108,4 @@ StyPro features 12 handcrafted, production-grade design systems spanning modern 
 - **Typography:** Rigid monospaced headers and technical coordinate readouts.
 - **Geometry:** 0px sharp rectangular boundaries, 1px technical bounding boxes, zero decorative shadows.
 - **Interaction:** Hairline registration crosshairs, instantaneous binary node activation.
+

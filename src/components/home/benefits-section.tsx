@@ -30,39 +30,48 @@ export function BenefitsSection() {
   ];
 
   return (
-    <section id="benefits" className="py-16 md:py-24 border-t border-white/[0.08]">
-      <div className="max-w-2xl mb-12 space-y-3">
-        <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#5E6AD2]">
-          <span>Developer Problems Solved</span>
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight text-[#F4F5F8]">
-          Why StyPro Exists
-        </h2>
-        <p className="text-sm text-[#8C92A4] leading-relaxed">
-          Developers know what kind of interface they want, but lack the tools to communicate that visual direction precisely to AI coding assistants.
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {problems.map((p, idx) => {
-          const Icon = p.icon;
-          return (
-            <div
-              key={idx}
-              className="flex items-start gap-4 p-6 rounded-xl border border-white/[0.08] bg-[#090A0F] hover:border-white/[0.14] transition-colors"
-            >
-              <div className="p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-[#5E6AD2] shrink-0">
-                <Icon className="w-5 h-5" />
-              </div>
-              <div className="space-y-1.5">
-                <h3 className="text-base font-bold text-[#F4F5F8]">{p.title}</h3>
-                <p className="text-xs text-[#8C92A4] leading-relaxed">{p.description}</p>
-              </div>
+    <section id="benefits" className="py-20 md:py-28 bg-[#16191f] text-[#fcfcfd] border-t border-white/[0.08]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column: Heading & Introduction */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-wider text-[#074ce0] bg-[#074ce0]/10 px-3 py-1 rounded-full border border-[#074ce0]/25">
+              <span>Developer Problems Solved</span>
             </div>
-          );
-        })}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fcfcfd] font-display leading-[1.1]">
+              Why StyPro Exists
+            </h2>
+            <p className="text-base text-[#d0d4dd] leading-relaxed font-body">
+              Developers know what kind of interface they want, but lack the tools to communicate that visual direction precisely to AI coding assistants.
+            </p>
+
+            <div className="pt-4 border-t border-white/[0.1] text-[14px] text-[#d0d4dd] leading-relaxed">
+              &ldquo;StyPro eliminates subjective aesthetic guesswork through deterministic token structures and implementation-ready system prompts.&rdquo;
+            </div>
+          </div>
+
+          {/* Right Column: 2x2 Benefits Grid */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {problems.map((p, idx) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-[12px] border border-white/[0.1] bg-[#1f242d] hover:border-[#074ce0] transition-all duration-160 space-y-3 shadow-sm"
+                >
+                  <div className="w-10 h-10 rounded-[10px] bg-[#074ce0]/15 flex items-center justify-center text-[#074ce0] shrink-0">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <h3 className="text-base font-bold text-[#fcfcfd] font-display">{p.title}</h3>
+                    <p className="text-[13px] text-[#d0d4dd] leading-relaxed">{p.description}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-

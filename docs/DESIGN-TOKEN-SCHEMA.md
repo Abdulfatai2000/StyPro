@@ -235,3 +235,4 @@ The resolver applies overrides non-destructively:
 2. Scales spacing scale increments when `scaleMultiplier` is altered.
 3. Maps button and card border radii to individual component rules.
 4. Updates CSS variable injectors dynamically without triggering page reloads.
+

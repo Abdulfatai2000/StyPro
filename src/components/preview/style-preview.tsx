@@ -20,56 +20,56 @@ export function StylePreview({ style, initialTab = 'app' }: StylePreviewProps) {
   const cssVars = getStyleCssVariables(style);
 
   return (
-    <div className="w-full rounded-xl border border-white/[0.12] bg-[#090A0F] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+    <div className="w-full rounded-xl border border-[#dde0e6] bg-white overflow-hidden shadow-sm font-sans">
       {/* Window Titlebar / Chrome */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-white/[0.08] bg-[#0D0F17]">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-[#dde0e6] bg-[#fcfcfd]">
         {/* Left window indicators & info */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-[#FF5F56]/80 inline-block" />
-            <span className="w-3 h-3 rounded-full bg-[#FFBD2E]/80 inline-block" />
-            <span className="w-3 h-3 rounded-full bg-[#27C93F]/80 inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#f87171] inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#fbbf24] inline-block" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#34d399] inline-block" />
           </div>
-          <span className="text-xs font-mono text-[#8C92A4] hidden sm:inline">
+          <span className="text-xs font-mono text-[#454c58] hidden sm:inline">
             preview://{style.slug}
           </span>
-          <span className="text-[11px] px-2 py-0.5 rounded border border-white/[0.08] bg-white/[0.03] text-[#9BA1B0] font-medium">
+          <span className="text-xs px-2.5 py-0.5 rounded-full border border-[#dde0e6] bg-[#f3f4f6] text-[#16191f] font-semibold">
             {style.name}
           </span>
         </div>
 
         {/* View Switcher Tabs */}
-        <div className="flex items-center gap-1 bg-[#050506] p-1 rounded-lg border border-white/[0.08]">
+        <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
           <button
             type="button"
             onClick={() => setActiveTab('app')}
-            className={`flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'app'
-                ? 'bg-[#151824] text-[#F4F5F8] shadow-sm'
-                : 'text-[#8C92A4] hover:text-[#F4F5F8]'
+                ? 'bg-[#074ce0] text-white shadow-xs'
+                : 'text-[#454c58] hover:text-[#16191f]'
             }`}
           >
-            <Eye className="w-3.5 h-3.5 text-[#5E6AD2]" />
+            <Eye className="w-3.5 h-3.5" />
             <span>App Simulation</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('components')}
-            className={`flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'components'
-                ? 'bg-[#151824] text-[#F4F5F8] shadow-sm'
-                : 'text-[#8C92A4] hover:text-[#F4F5F8]'
+                ? 'bg-[#074ce0] text-white shadow-xs'
+                : 'text-[#454c58] hover:text-[#16191f]'
             }`}
           >
-            <LayoutGrid className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            <span>Component Specimen</span>
+            <LayoutGrid className="w-3.5 h-3.5" />
+            <span>Component Specimens</span>
           </button>
         </div>
       </div>
 
       {/* Dynamic Style Scope Container */}
       <div
-        className="w-full transition-all duration-200"
+        className="w-full"
         style={cssVars}
       >
         {activeTab === 'app' ? (
@@ -90,4 +90,3 @@ export function StylePreview({ style, initialTab = 'app' }: StylePreviewProps) {
     </div>
   );
 }
-

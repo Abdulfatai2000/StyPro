@@ -104,3 +104,4 @@ StyPro/
 2. **Zero Layout Shift (CLS = 0):** All container aspect ratios, font swap metrics (`next/font`), and preview frames use fixed geometry or CSS containment.
 3. **Contrast Compliance (WCAG 2.1 AA):** All 12 styles maintain compliant foreground/background contrast ratios for primary body text and buttons.
 4. **Reduced Motion Support:** All animations adhere to `prefers-reduced-motion` media queries and customizer speed settings.
+

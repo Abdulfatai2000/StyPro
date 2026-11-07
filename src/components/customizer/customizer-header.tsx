@@ -24,28 +24,28 @@ export function CustomizerHeader({
   onResetAll,
 }: CustomizerHeaderProps) {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#050506]/90 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3.5">
+    <header className="sticky top-0 z-40 w-full border-b border-[#dde0e6] bg-[#fcfcfd]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3 font-sans">
       <div className="flex flex-wrap items-center justify-between gap-4">
         {/* Left: Back Link & Style Info */}
         <div className="flex items-center gap-4">
           <Link
             href={`/styles/${style.slug}`}
-            className="flex items-center gap-1.5 text-xs text-[#8C92A4] hover:text-[#F4F5F8] transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-[#16191f] font-medium transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Back to Spec</span>
           </Link>
 
-          <div className="h-4 w-px bg-white/[0.1] hidden sm:block" />
+          <div className="h-4 w-px bg-[#dde0e6] hidden sm:block" />
 
           <div className="flex items-center gap-2">
-            <h1 className="text-sm font-bold text-[#F4F5F8]">{style.name}</h1>
-            <span className="text-[11px] font-mono text-[#8C92A4] hidden md:inline">
-              / {style.slug}
+            <h1 className="text-sm font-bold text-[#16191f] font-display">{style.name}</h1>
+            <span className="text-xs text-[#454c58] hidden md:inline font-mono">
+              ({style.slug})
             </span>
             {isDirty && (
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#5E6AD2]/15 text-[#5E6AD2] border border-[#5E6AD2]/30 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#5E6AD2] animate-pulse" />
+              <span className="text-xs px-2.5 py-0.5 bg-[#074ce0]/10 text-[#074ce0] border border-[#074ce0]/20 rounded-full font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
                 {dirtyCount} Modified
               </span>
             )}
@@ -53,78 +53,56 @@ export function CustomizerHeader({
         </div>
 
         {/* Center: Mode Tabs */}
-        <div className="flex items-center gap-1 bg-[#090A0F] p-1 rounded-lg border border-white/[0.08]">
+        <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
           <button
             type="button"
             onClick={() => onTabChange('customize')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'customize'
-                ? 'bg-[#151824] text-white shadow-sm'
-                : 'text-[#8C92A4] hover:text-white'
+                ? 'bg-[#074ce0] text-white shadow-xs'
+                : 'text-[#454c58] hover:text-[#16191f]'
             }`}
           >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            <span>Visual Customizer</span>
+            <SlidersHorizontal className="w-3.5 h-3.5" />
+            <span>Customizer</span>
           </button>
           <button
             type="button"
             onClick={() => onTabChange('prompt')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'prompt'
-                ? 'bg-[#151824] text-white shadow-sm'
-                : 'text-[#8C92A4] hover:text-white'
+                ? 'bg-[#074ce0] text-white shadow-xs'
+                : 'text-[#454c58] hover:text-[#16191f]'
             }`}
           >
-            <Terminal className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            <span>AI Design Prompt</span>
+            <Terminal className="w-3.5 h-3.5" />
+            <span>AI Prompt</span>
           </button>
         </div>
 
-        {/* Right: Actions */}
+        {/* Right: Reset & Export */}
         <div className="flex items-center gap-3">
-          <Link
-            href={`/export/${style.slug}`}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md border border-white/[0.1] bg-[#090A0F] text-[#F4F5F8] hover:bg-white/[0.04] transition-all"
-            title="Export CSS, Tailwind, JSON tokens, and Markdown"
-          >
-            <Download className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            <span className="hidden sm:inline">Export</span>
-          </Link>
-
           {isDirty && (
             <button
               type="button"
               onClick={onResetAll}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-[#8C92A4] hover:text-white bg-white/[0.03] hover:bg-white/[0.08] rounded-md border border-white/[0.08] transition-all cursor-pointer"
-              title="Reset all modifications back to original style defaults"
+              className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-red-600 px-2 py-1 font-medium transition-colors cursor-pointer"
+              title="Reset all modifications back to style baseline"
             >
-              <RotateCcw className="w-3 h-3" />
-              <span>Reset All</span>
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Reset All</span>
             </button>
           )}
 
-          {activeTab === 'customize' ? (
-            <button
-              type="button"
-              onClick={() => onTabChange('prompt')}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-md bg-[#5E6AD2] hover:bg-[#6E79D8] text-white transition-all shadow-[0_0_15px_rgba(94,106,210,0.3)] cursor-pointer"
-            >
-              <Terminal className="w-3.5 h-3.5" />
-              <span>Generate Prompt</span>
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => onTabChange('customize')}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-md bg-[#5E6AD2] hover:bg-[#6E79D8] text-white transition-all cursor-pointer"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5" />
-              <span>Back to Customizer</span>
-            </button>
-          )}
+          <Link
+            href={`/export/${style.slug}`}
+            className="btn-primary text-xs !py-1.5 !px-3"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>Export Tokens</span>
+          </Link>
         </div>
       </div>
     </header>
   );
 }
-

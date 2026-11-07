@@ -8,27 +8,29 @@ interface StylePropertiesProps {
 
 export function StyleProperties({ style }: StylePropertiesProps) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 font-sans">
       {/* Philosophy & Recommended Use Cases */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Philosophy */}
-        <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#5E6AD2]">
+        <div className="software-card p-6 space-y-3.5 bg-white">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
             <Sparkles className="w-4 h-4" />
-            <span>Design Philosophy & Direction</span>
+            <span>Design Philosophy</span>
           </div>
-          <h4 className="text-lg font-bold text-[#F4F5F8]">
+          <h4 className="text-lg font-bold text-[#16191f] font-display">
             {style.philosophy.direction}
           </h4>
-          <p className="text-sm text-[#8C92A4] leading-relaxed">
+          <p className="text-base text-[#454c58] leading-[1.6]">
             {style.philosophy.intendedAtmosphere}
           </p>
-          <div className="pt-2 border-t border-white/[0.06] space-y-2">
-            <span className="text-xs font-semibold text-[#F4F5F8]">Key Characteristics:</span>
+          <div className="pt-3 border-t border-[#dde0e6] space-y-2">
+            <span className="text-xs font-bold text-[#16191f] uppercase tracking-wide">
+              Key Visual Characteristics:
+            </span>
             <ul className="space-y-1.5">
               {style.philosophy.visualCharacteristics.map((item, idx) => (
-                <li key={idx} className="text-xs text-[#8C92A4] flex items-start gap-2">
-                  <span className="text-[#5E6AD2] font-bold">›</span>
+                <li key={idx} className="text-sm text-[#454c58] flex items-start gap-2">
+                  <span className="text-[#074ce0] font-bold">›</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -37,21 +39,21 @@ export function StyleProperties({ style }: StylePropertiesProps) {
         </div>
 
         {/* Recommended Use Cases */}
-        <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-4">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#10B981]">
+        <div className="software-card p-6 space-y-3.5 bg-white">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
             <CheckCircle2 className="w-4 h-4" />
-            <span>Recommended Product Types</span>
+            <span>Recommended Domain Applications</span>
           </div>
-          <h4 className="text-lg font-bold text-[#F4F5F8]">
-            Best Suited Application Domains
+          <h4 className="text-lg font-bold text-[#16191f] font-display">
+            Ideal For
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-2">
             {style.philosophy.recommendedUseCases.map((useCase, idx) => (
               <li
                 key={idx}
-                className="flex items-center gap-2.5 p-2.5 rounded-lg border border-white/[0.04] bg-[#050506] text-xs text-[#F4F5F8]"
+                className="flex items-center gap-2.5 p-3 rounded-lg border border-[#dde0e6] bg-[#fcfcfd] text-sm text-[#16191f] font-medium"
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#10B981]" />
+                <div className="w-2 h-2 rounded-full bg-[#074ce0]" />
                 <span>{useCase}</span>
               </li>
             ))}
@@ -60,87 +62,81 @@ export function StyleProperties({ style }: StylePropertiesProps) {
       </div>
 
       {/* Geometry, Shadows, and Spacing Tokens Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Border Radius */}
-        <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-4">
-          <h4 className="text-xs font-mono uppercase tracking-wider text-[#5E6AD2] flex items-center gap-2">
+        <div className="software-card p-5 space-y-3 bg-white">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0] flex items-center gap-2">
             <Box className="w-4 h-4" />
             <span>Corner Geometry</span>
           </h4>
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Radius SM</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.borderRadius.sm}</span>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Radius SM</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.borderRadius.sm}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Radius MD (Default)</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.borderRadius.md}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Radius MD (Default)</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.borderRadius.md}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Radius LG</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.borderRadius.lg}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Radius LG</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.borderRadius.lg}</span>
             </div>
-            <div className="flex justify-between py-1">
-              <span className="text-[#8C92A4]">Border Thickness</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.borderThickness.thin}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Border Width</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.borderThickness.thin}</span>
             </div>
           </div>
         </div>
 
         {/* Shadows & Elevation */}
-        <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-4">
-          <h4 className="text-xs font-mono uppercase tracking-wider text-[#5E6AD2] flex items-center gap-2">
+        <div className="software-card p-5 space-y-3 bg-white">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0] flex items-center gap-2">
             <Sliders className="w-4 h-4" />
             <span>Shadows & Elevation</span>
           </h4>
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Elevation</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.elevation}</span>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Elevation Base</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.elevation}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Shadow SM</span>
-              <span className="font-mono text-[#F4F5F8] truncate max-w-[140px]" title={style.shapesEffects.shadows.sm}>
-                {style.shapesEffects.shadows.sm}
-              </span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Shadow MD</span>
+              <span className="font-mono text-[#16191f] font-medium truncate max-w-[130px]">{style.shapesEffects.shadows.md}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Shadow MD</span>
-              <span className="font-mono text-[#F4F5F8] truncate max-w-[140px]" title={style.shapesEffects.shadows.md}>
-                {style.shapesEffects.shadows.md}
-              </span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Shadow LG</span>
+              <span className="font-mono text-[#16191f] font-medium truncate max-w-[130px]">{style.shapesEffects.shadows.lg}</span>
             </div>
-            <div className="flex justify-between py-1">
-              <span className="text-[#8C92A4]">Backdrop Blur</span>
-              <span className="font-mono text-[#F4F5F8]">{style.shapesEffects.backdropBlur}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Backdrop Blur</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.shapesEffects.backdropBlur}</span>
             </div>
           </div>
         </div>
 
-        {/* Layout & Grid */}
-        <div className="rounded-xl border border-white/[0.08] bg-[#090A0F] p-6 space-y-4">
-          <h4 className="text-xs font-mono uppercase tracking-wider text-[#5E6AD2] flex items-center gap-2">
+        {/* Grid & Spacing */}
+        <div className="software-card p-5 space-y-3 bg-white">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0] flex items-center gap-2">
             <Maximize2 className="w-4 h-4" />
-            <span>Layout & Spatial Grid</span>
+            <span>Layout & Spatial Rhythm</span>
           </h4>
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Max Content Width</span>
-              <span className="font-mono text-[#F4F5F8]">{style.layout.maxContentWidth}</span>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Grid Columns</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.layout.gridColumns}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Grid Columns</span>
-              <span className="font-mono text-[#F4F5F8]">{style.layout.gridColumns}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Column Gap</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.layout.columnGap}</span>
             </div>
-            <div className="flex justify-between py-1 border-b border-white/[0.04]">
-              <span className="text-[#8C92A4]">Content Padding</span>
-              <span className="font-mono text-[#F4F5F8]">{style.spacing.contentPadding}</span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Max Container</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.layout.maxContentWidth}</span>
             </div>
-            <div className="flex justify-between py-1">
-              <span className="text-[#8C92A4]">Transitions</span>
-              <span className="font-mono text-[#F4F5F8] truncate max-w-[140px]" title={style.interaction.transitions}>
-                {style.interaction.transitions}
-              </span>
+            <div className="flex justify-between py-1.5 border-b border-[#dde0e6]">
+              <span className="text-[#454c58]">Component Gaps</span>
+              <span className="font-mono text-[#16191f] font-medium">{style.spacing.componentGaps}</span>
             </div>
           </div>
         </div>
@@ -148,4 +144,3 @@ export function StyleProperties({ style }: StylePropertiesProps) {
     </div>
   );
 }
-

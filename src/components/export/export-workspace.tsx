@@ -73,31 +73,31 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
   const sizeFormatted = (byteSize / 1024).toFixed(1) + ' KB';
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050506]">
+    <div className="flex flex-col min-h-screen bg-[#fcfcfd] text-[#16191f] font-sans">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#050506]/90 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3.5">
+      <header className="sticky top-0 z-40 w-full border-b border-[#dde0e6] bg-[#fcfcfd]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Back links */}
           <div className="flex items-center gap-4">
             <Link
               href={`/customize/${baseStyle.slug}`}
-              className="flex items-center gap-1.5 text-xs text-[#8C92A4] hover:text-[#F4F5F8] transition-colors"
+              className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-[#16191f] font-medium transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Customizer</span>
             </Link>
 
-            <div className="h-4 w-px bg-white/[0.1] hidden sm:block" />
+            <div className="h-4 w-px bg-[#dde0e6] hidden sm:block" />
 
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold text-[#F4F5F8]">{baseStyle.name}</h1>
-              <span className="text-[11px] font-mono text-[#8C92A4]">
+              <h1 className="text-sm font-bold text-[#16191f] font-display">{baseStyle.name}</h1>
+              <span className="text-xs text-[#454c58]">
                 Export Hub
               </span>
               {isCustomized && (
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#5E6AD2]/15 text-[#5E6AD2] border border-[#5E6AD2]/30 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#5E6AD2]" />
-                  {overrideCount} Customizations Applied
+                <span className="text-xs px-2.5 py-0.5 bg-[#074ce0]/10 text-[#074ce0] border border-[#074ce0]/20 rounded-full font-semibold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+                  {overrideCount} Modified
                 </span>
               )}
             </div>
@@ -108,16 +108,16 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
             <button
               type="button"
               onClick={handleCopy}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium rounded-lg border border-white/[0.1] bg-[#090A0F] text-[#F4F5F8] hover:bg-white/[0.04] transition-all cursor-pointer"
+              className="btn-secondary text-xs !py-1.5 !px-3"
             >
-              {isCopied ? <Check className="w-3.5 h-3.5 text-[#10B981]" /> : <Copy className="w-3.5 h-3.5" />}
+              {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{isCopied ? 'Copied Code!' : 'Copy Code'}</span>
             </button>
 
             <button
               type="button"
               onClick={handleDownload}
-              className="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold rounded-lg bg-[#5E6AD2] hover:bg-[#6E79D8] text-white transition-all shadow-[0_0_15px_rgba(94,106,210,0.3)] cursor-pointer"
+              className="btn-primary text-xs !py-1.5 !px-3"
             >
               {downloadSuccess ? (
                 <Check className="w-3.5 h-3.5" />
@@ -133,7 +133,7 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
       {/* Main Export Experience */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full space-y-6">
         {/* Format Selector Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {targets.map((target) => {
             const isSelected = selectedFormat === target.id;
             return (
@@ -141,33 +141,34 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
                 key={target.id}
                 type="button"
                 onClick={() => setSelectedFormat(target.id)}
-                className={`p-4 rounded-xl border text-left transition-all cursor-pointer relative ${
+                className={`software-card p-5 text-left transition-all cursor-pointer relative bg-white ${
                   isSelected
-                    ? 'border-[#5E6AD2] bg-[#5E6AD2]/10 shadow-[0_4px_20px_rgba(94,106,210,0.15)]'
-                    : 'border-white/[0.08] bg-[#090A0F] hover:border-white/[0.14]'
+                    ? '!border-[#074ce0] ring-2 ring-[#074ce0]/20 shadow-md'
+                    : 'hover:border-[#074ce0]'
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-3">
                   <div
-                    className={`p-2 rounded-lg border text-xs font-mono font-bold ${
+                    className={`px-2.5 py-1 rounded-md text-xs font-mono font-bold border ${
                       isSelected
-                        ? 'border-[#5E6AD2] bg-[#5E6AD2]/20 text-white'
-                        : 'border-white/[0.08] bg-white/[0.02] text-[#8C92A4]'
+                        ? 'border-[#074ce0] bg-[#074ce0] text-white'
+                        : 'border-[#dde0e6] bg-[#f3f4f6] text-[#454c58]'
                     }`}
                   >
                     {target.extension}
                   </div>
                   {isSelected && (
-                    <span className="text-[10px] font-mono text-[#5E6AD2] font-semibold">
-                      ● Active
+                    <span className="text-xs text-[#074ce0] font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+                      Selected
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-sm font-bold text-[#F4F5F8] mb-1">
+                <h3 className="text-sm font-bold text-[#16191f] mb-1">
                   {target.label}
                 </h3>
-                <p className="text-xs text-[#8C92A4] leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#454c58] leading-relaxed line-clamp-2">
                   {target.description}
                 </p>
               </button>
@@ -177,24 +178,24 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
 
         {/* Format-specific sub-options */}
         {selectedFormat === 'tailwind' && (
-          <div className="flex items-center justify-between p-3.5 rounded-xl border border-white/[0.08] bg-[#090A0F]">
+          <div className="software-card p-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="space-y-0.5">
-              <span className="text-xs font-medium text-[#F4F5F8]">
+              <span className="text-sm font-bold text-[#16191f]">
                 Tailwind Architecture Target
               </span>
-              <p className="text-[11px] text-[#8C92A4]">
+              <p className="text-xs text-[#454c58]">
                 Choose between modern CSS-first Tailwind v4 @theme or classic Tailwind v3 config
               </p>
             </div>
 
-            <div className="flex items-center gap-1 bg-[#050506] p-1 rounded-lg border border-white/[0.08]">
+            <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
               <button
                 type="button"
                 onClick={() => setTailwindVersion('v4')}
-                className={`px-3 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                   tailwindVersion === 'v4'
-                    ? 'bg-[#151824] text-white'
-                    : 'text-[#8C92A4] hover:text-white'
+                    ? 'bg-[#074ce0] text-white shadow-xs'
+                    : 'text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 Tailwind v4 (@theme)
@@ -202,10 +203,10 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
               <button
                 type="button"
                 onClick={() => setTailwindVersion('v3')}
-                className={`px-3 py-1 text-xs font-medium rounded transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                   tailwindVersion === 'v3'
-                    ? 'bg-[#151824] text-white'
-                    : 'text-[#8C92A4] hover:text-white'
+                    ? 'bg-[#074ce0] text-white shadow-xs'
+                    : 'text-[#454c58] hover:text-[#16191f]'
                 }`}
               >
                 Tailwind v3 (config.ts)
@@ -215,38 +216,38 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
         )}
 
         {/* Code Viewer Container */}
-        <div className="rounded-xl border border-white/[0.1] bg-[#090A0F] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+        <div className="software-card bg-white overflow-hidden shadow-sm">
           {/* Viewer Titlebar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-white/[0.08] bg-[#0D0F17]">
+          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[#dde0e6] bg-[#fcfcfd]">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-[#FF5F56]/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#FFBD2E]/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-[#27C93F]/80 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#f87171] inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#fbbf24] inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#34d399] inline-block" />
               </div>
-              <span className="text-xs font-mono text-[#F4F5F8] font-medium">
+              <span className="text-xs font-mono text-[#16191f] font-bold">
                 {exportResult.filename}
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-mono text-[#8C92A4]">
-              <span>Lines: {lineCount}</span>
-              <span>Size: {sizeFormatted}</span>
-              <span>Format: {selectedFormat.toUpperCase()}</span>
+            <div className="flex items-center gap-4 text-xs font-mono text-[#454c58]">
+              <span>{lineCount} lines</span>
+              <span>{sizeFormatted}</span>
+              <span>{selectedFormat.toUpperCase()}</span>
             </div>
           </div>
 
           {/* Code Viewer Area */}
-          <div className="p-4 bg-[#050506] relative">
-            <pre className="w-full max-h-[600px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-white/[0.06] bg-[#07080B] text-[#E2E4ED] whitespace-pre-wrap selection:bg-[#5E6AD2]/30">
+          <div className="p-4 bg-[#f8f9fa]">
+            <pre className="w-full max-h-[600px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-[#dde0e6] bg-[#16191f] text-[#fcfcfd] whitespace-pre-wrap selection:bg-[#074ce0]/40">
               {exportResult.code}
             </pre>
           </div>
 
           {/* Viewer Footer Guidance */}
-          <div className="px-4 py-3 border-t border-white/[0.06] bg-[#0D0F17] flex items-center justify-between text-xs text-[#8C92A4]">
+          <div className="px-4 py-3 border-t border-[#dde0e6] bg-[#fcfcfd] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-[#454c58]">
             <div className="flex items-center gap-1.5">
-              <FileCode className="w-3.5 h-3.5 text-[#5E6AD2]" />
+              <FileCode className="w-4 h-4 text-[#074ce0]" />
               <span>
                 {currentTarget.description}
               </span>
@@ -255,7 +256,7 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
             <button
               type="button"
               onClick={handleDownload}
-              className="text-[#5E6AD2] hover:underline flex items-center gap-1 cursor-pointer font-mono"
+              className="text-[#074ce0] font-semibold hover:underline flex items-center gap-1 cursor-pointer"
             >
               <span>Download {currentTarget.extension}</span>
               <Download className="w-3.5 h-3.5" />
