@@ -29,9 +29,9 @@ export function HowItWorks() {
       description:
         'Fine-tune semantic color tokens, typography scales, corner radii, and shadow elevations with live preview feedback.',
       icon: SlidersHorizontal,
-      status: 'Coming Soon',
+      status: 'Available Now',
       phase: 'Phase 2',
-      isActive: false,
+      isActive: true,
     },
     {
       number: '04',
@@ -39,9 +39,9 @@ export function HowItWorks() {
       description:
         'Synthesize deterministic, implementation-ready prompts tailored for coding agents like Antigravity, Cursor, and Claude Code.',
       icon: Terminal,
-      status: 'Coming Soon',
-      phase: 'Phase 3',
-      isActive: false,
+      status: 'Available Now',
+      phase: 'Phase 2',
+      isActive: true,
     },
     {
       number: '05',

@@ -47,23 +47,13 @@ export function StyleHeader({ style }: StyleHeaderProps) {
 
         {/* Action Controls */}
         <div className="flex flex-wrap items-center gap-3">
-          {/* Phase 2 Customizer placeholder button */}
-          <div className="relative group">
-            <button
-              type="button"
-              disabled
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-white/[0.12] bg-[#0D0F17] text-xs font-medium text-[#8C92A4] opacity-80 cursor-not-allowed"
-            >
-              <SlidersHorizontal className="w-4 h-4 text-[#5E6AD2]" />
-              <span>Customize Style</span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#5E6AD2]/20 text-[#5E6AD2] border border-[#5E6AD2]/30">
-                Phase 2
-              </span>
-            </button>
-            <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-48 p-2 rounded bg-[#141724] border border-white/[0.1] text-[11px] text-[#9BA1B0] text-center shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-20">
-              Interactive visual customizer is coming in Phase 2
-            </div>
-          </div>
+          <Link
+            href={`/customize/${style.slug}`}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#5E6AD2]/40 bg-[#5E6AD2]/15 hover:bg-[#5E6AD2]/25 text-white text-xs font-semibold transition-all shadow-[0_0_15px_rgba(94,106,210,0.2)]"
+          >
+            <SlidersHorizontal className="w-4 h-4 text-[#5E6AD2]" />
+            <span>Customize Style</span>
+          </Link>
 
           <a
             href="#live-preview"

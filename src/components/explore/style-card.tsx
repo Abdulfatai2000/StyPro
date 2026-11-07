@@ -99,13 +99,14 @@ export function StyleCard({ style }: StyleCardProps) {
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
         </Link>
 
-        <span
-          className="text-[11px] font-mono text-[#636A7E] flex items-center gap-1"
-          title="Customizer active in Phase 2"
+        <Link
+          href={`/customize/${style.slug}`}
+          className="text-[11px] font-mono text-[#5E6AD2] hover:text-[#6E79D8] flex items-center gap-1 transition-colors"
+          title="Open Visual Customizer"
         >
-          <SlidersHorizontal className="w-3 h-3 text-[#5E6AD2]/60" />
-          <span>v1.0</span>
-        </span>
+          <SlidersHorizontal className="w-3 h-3" />
+          <span>Customize</span>
+        </Link>
       </div>
     </div>
   );
