@@ -24,28 +24,28 @@ export function CustomizerHeader({
   onResetAll,
 }: CustomizerHeaderProps) {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#dde0e6] bg-[#fcfcfd]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3 font-sans">
+    <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#08090c]/90 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3 font-sans">
       <div className="flex flex-wrap items-center justify-between gap-4">
         {/* Left: Back Link & Style Info */}
         <div className="flex items-center gap-4">
           <Link
             href={`/styles/${style.slug}`}
-            className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-[#16191f] font-medium transition-colors"
+            className="flex items-center gap-1.5 text-xs text-[#9499ad] hover:text-white font-medium transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">Back to Spec</span>
           </Link>
 
-          <div className="h-4 w-px bg-[#dde0e6] hidden sm:block" />
+          <div className="h-4 w-px bg-white/[0.08] hidden sm:block" />
 
           <div className="flex items-center gap-2">
-            <h1 className="text-sm font-bold text-[#16191f] font-display">{style.name}</h1>
-            <span className="text-xs text-[#454c58] hidden md:inline font-mono">
+            <h1 className="text-sm font-bold text-white font-display">{style.name}</h1>
+            <span className="text-xs text-[#9499ad] hidden md:inline font-mono">
               ({style.slug})
             </span>
             {isDirty && (
-              <span className="text-xs px-2.5 py-0.5 bg-[#074ce0]/10 text-[#074ce0] border border-[#074ce0]/20 rounded-full font-semibold flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+              <span className="text-xs px-2.5 py-0.5 bg-[#5e6ad2]/15 text-[#818cf8] border border-[#5e6ad2]/30 rounded-full font-semibold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" />
                 {dirtyCount} Modified
               </span>
             )}
@@ -53,14 +53,14 @@ export function CustomizerHeader({
         </div>
 
         {/* Center: Mode Tabs */}
-        <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
+        <div className="flex items-center gap-1 bg-white/[0.04] p-1 rounded-lg border border-white/[0.08]">
           <button
             type="button"
             onClick={() => onTabChange('customize')}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'customize'
-                ? 'bg-[#074ce0] text-white shadow-xs'
-                : 'text-[#454c58] hover:text-[#16191f]'
+                ? 'bg-[#5e6ad2] text-white shadow-xs'
+                : 'text-[#9499ad] hover:text-white'
             }`}
           >
             <SlidersHorizontal className="w-3.5 h-3.5" />
@@ -71,8 +71,8 @@ export function CustomizerHeader({
             onClick={() => onTabChange('prompt')}
             className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'prompt'
-                ? 'bg-[#074ce0] text-white shadow-xs'
-                : 'text-[#454c58] hover:text-[#16191f]'
+                ? 'bg-[#5e6ad2] text-white shadow-xs'
+                : 'text-[#9499ad] hover:text-white'
             }`}
           >
             <Terminal className="w-3.5 h-3.5" />
@@ -86,7 +86,7 @@ export function CustomizerHeader({
             <button
               type="button"
               onClick={onResetAll}
-              className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-red-600 px-2 py-1 font-medium transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 text-xs text-[#9499ad] hover:text-red-400 px-2 py-1 font-medium transition-colors cursor-pointer"
               title="Reset all modifications back to style baseline"
             >
               <RotateCcw className="w-3.5 h-3.5" />

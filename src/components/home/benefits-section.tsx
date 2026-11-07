@@ -30,22 +30,22 @@ export function BenefitsSection() {
   ];
 
   return (
-    <section id="benefits" className="py-20 md:py-28 bg-[#16191f] text-[#fcfcfd] border-t border-white/[0.08]">
+    <section id="benefits" className="py-20 md:py-28 bg-[#08090c] text-white border-t border-white/[0.08]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Heading & Introduction */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-wider text-[#074ce0] bg-[#074ce0]/10 px-3 py-1 rounded-full border border-[#074ce0]/25">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#818cf8] bg-[#5e6ad2]/10 px-3 py-1 rounded-full border border-[#5e6ad2]/25">
               <span>Developer Problems Solved</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#fcfcfd] font-display leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white font-display leading-[1.1]">
               Why StyPro Exists
             </h2>
-            <p className="text-base text-[#d0d4dd] leading-relaxed font-body">
+            <p className="text-base text-[#9499ad] leading-relaxed font-body">
               Developers know what kind of interface they want, but lack the tools to communicate that visual direction precisely to AI coding assistants.
             </p>
 
-            <div className="pt-4 border-t border-white/[0.1] text-[14px] text-[#d0d4dd] leading-relaxed">
+            <div className="pt-4 border-t border-white/[0.08] text-sm text-[#9499ad] leading-relaxed italic">
               &ldquo;StyPro eliminates subjective aesthetic guesswork through deterministic token structures and implementation-ready system prompts.&rdquo;
             </div>
           </div>
@@ -57,14 +57,14 @@ export function BenefitsSection() {
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-[12px] border border-white/[0.1] bg-[#1f242d] hover:border-[#074ce0] transition-all duration-160 space-y-3 shadow-sm"
+                  className="linear-card p-6 space-y-3"
                 >
-                  <div className="w-10 h-10 rounded-[10px] bg-[#074ce0]/15 flex items-center justify-center text-[#074ce0] shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-[#5e6ad2]/15 border border-[#5e6ad2]/30 flex items-center justify-center text-[#818cf8] shrink-0">
                     <Icon className="w-5 h-5" />
                   </div>
                   <div className="space-y-1.5">
-                    <h3 className="text-base font-bold text-[#fcfcfd] font-display">{p.title}</h3>
-                    <p className="text-[13px] text-[#d0d4dd] leading-relaxed">{p.description}</p>
+                    <h3 className="text-base font-bold text-white font-display">{p.title}</h3>
+                    <p className="text-xs text-[#9499ad] leading-relaxed">{p.description}</p>
                   </div>
                 </div>
               );

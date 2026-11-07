@@ -30,10 +30,10 @@ export function SpacingPanel({
   return (
     <div className="space-y-6 font-sans">
       {/* Category Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-base font-bold text-[#16191f] font-display">Spacing & Spatial Rhythms</h3>
-          <p className="text-xs text-[#454c58] mt-0.5">
+          <h3 className="text-base font-bold text-white font-display">Spacing & Spatial Rhythms</h3>
+          <p className="text-xs text-[#9499ad] mt-0.5">
             Control card padding, component gaps, and layout boundaries.
           </p>
         </div>
@@ -41,7 +41,7 @@ export function SpacingPanel({
           <button
             type="button"
             onClick={onResetCategory}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#074ce0] hover:text-white bg-[#074ce0]/10 hover:bg-[#074ce0] rounded-md border border-[#074ce0]/30 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#818cf8] hover:text-white bg-[#5e6ad2]/15 hover:bg-[#5e6ad2] rounded-md border border-[#5e6ad2]/30 transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset Spacing</span>
@@ -53,8 +53,8 @@ export function SpacingPanel({
         {/* Component Gaps */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Component Gaps</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentGaps}</span>
+            <span className="font-semibold text-white">Component Gaps</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentGaps}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['0.75rem', '1rem', '1.5rem', '2rem'].map((gap) => (
@@ -64,8 +64,8 @@ export function SpacingPanel({
                 onClick={() => onChange({ componentGaps: gap })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentGaps === gap
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {gap}
@@ -77,8 +77,8 @@ export function SpacingPanel({
         {/* Content Padding */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Card & Surface Padding</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentPadding}</span>
+            <span className="font-semibold text-white">Card & Surface Padding</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentPadding}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['1rem', '1.5rem', '2rem', '2.5rem'].map((pad) => (
@@ -88,8 +88,8 @@ export function SpacingPanel({
                 onClick={() => onChange({ contentPadding: pad })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentPadding === pad
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {pad}
@@ -101,8 +101,8 @@ export function SpacingPanel({
         {/* Section Spacing */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Major Section Spacing</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentSectionSpacing}</span>
+            <span className="font-semibold text-white">Major Section Spacing</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentSectionSpacing}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['3rem', '4rem', '5rem', '6rem'].map((sec) => (
@@ -112,8 +112,8 @@ export function SpacingPanel({
                 onClick={() => onChange({ sectionSpacing: sec })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentSectionSpacing === sec
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {sec}
@@ -125,8 +125,8 @@ export function SpacingPanel({
         {/* Max Container Width */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Container Max Width</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentMaxWidth}</span>
+            <span className="font-semibold text-white">Container Max Width</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentMaxWidth}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['1100px', '1200px', '1280px', '1440px'].map((w) => (
@@ -136,8 +136,8 @@ export function SpacingPanel({
                 onClick={() => onChange({ containerMaxWidth: w })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentMaxWidth === w
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {w}

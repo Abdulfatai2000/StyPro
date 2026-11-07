@@ -50,10 +50,10 @@ export function StyleTypography({ style }: StyleTypographyProps) {
 
   return (
     <div className="space-y-6 font-sans">
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-xl font-bold text-[#16191f] font-display">Typography Hierarchy</h3>
-          <p className="text-sm text-[#454c58] mt-0.5">
+          <h3 className="text-xl font-bold text-white font-display">Typography Hierarchy</h3>
+          <p className="text-sm text-[#9499ad] mt-0.5">
             Modular scale, weight hierarchy, and font stacks
           </p>
         </div>
@@ -64,13 +64,13 @@ export function StyleTypography({ style }: StyleTypographyProps) {
         {fontFamilies.map((font, idx) => (
           <div
             key={idx}
-            className="software-card p-5 space-y-1.5 bg-white"
+            className="linear-card p-5 space-y-1.5"
           >
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#074ce0]">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#818cf8]">
               <Type className="w-4 h-4" />
               <span>{font.label}</span>
             </div>
-            <p className="text-sm font-semibold text-[#16191f] truncate" title={font.value}>
+            <p className="text-sm font-semibold text-white truncate" title={font.value}>
               {font.value}
             </p>
           </div>
@@ -78,14 +78,14 @@ export function StyleTypography({ style }: StyleTypographyProps) {
       </div>
 
       {/* Typography Specimen Ladder */}
-      <div className="software-card bg-white overflow-hidden divide-y divide-[#dde0e6]">
+      <div className="linear-card overflow-hidden divide-y divide-white/[0.08]">
         {specimens.map((spec, sIdx) => (
           <div key={sIdx} className="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="md:w-48 shrink-0 space-y-0.5">
-              <span className="text-xs font-bold text-[#074ce0] uppercase tracking-wide">
+              <span className="text-xs font-bold text-[#818cf8] uppercase tracking-wide">
                 {spec.level}
               </span>
-              <div className="text-xs text-[#454c58]">
+              <div className="text-xs text-[#9499ad]">
                 {spec.size} · weight {spec.weight}
               </div>
             </div>
@@ -96,7 +96,7 @@ export function StyleTypography({ style }: StyleTypographyProps) {
                 fontFamily: spec.isMono ? style.typography.monospaceFont : style.typography.headingFont,
                 fontSize: spec.size,
                 fontWeight: spec.weight,
-                color: '#16191f',
+                color: '#ffffff',
               }}
             >
               <div className="truncate">{spec.sample}</div>

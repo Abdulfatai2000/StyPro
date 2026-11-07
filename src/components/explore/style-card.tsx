@@ -28,29 +28,29 @@ export function StyleCard({ style }: StyleCardProps) {
   ];
 
   return (
-    <div className="software-card group relative flex flex-col p-6 transition-all duration-160">
+    <div className="linear-card group relative flex flex-col p-6">
       {/* Top Header */}
       <div className="flex items-start justify-between gap-3 mb-3.5">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-[12px] font-semibold text-[#074ce0] bg-[#074ce0]/10 px-2.5 py-0.5 rounded-full border border-[#074ce0]/20">
+            <span className="text-xs font-semibold text-[#818cf8] bg-[#5e6ad2]/15 px-2.5 py-0.5 rounded-full border border-[#5e6ad2]/30">
               {style.category}
             </span>
             {style.isFeatured && (
-              <span className="text-[11px] font-medium text-[#10b981] bg-[#10b981]/10 px-2 py-0.5 rounded-full flex items-center gap-1 border border-[#10b981]/20">
+              <span className="text-[11px] font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center gap-1 border border-emerald-500/25">
                 <Sparkles className="w-3 h-3" />
                 Featured
               </span>
             )}
           </div>
-          <h3 className="text-xl font-bold tracking-tight text-[#16191f] group-hover:text-[#074ce0] transition-colors font-display">
+          <h3 className="text-xl font-bold tracking-tight text-white group-hover:text-[#818cf8] transition-colors font-display">
             {style.name}
           </h3>
         </div>
 
         {/* Visual Miniature Badge */}
         <div
-          className="w-9 h-9 rounded-[8px] flex items-center justify-center text-xs font-bold border shadow-xs transition-transform duration-160 group-hover:scale-105 shrink-0"
+          className="w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold border shadow-xs transition-transform duration-160 group-hover:scale-105 shrink-0"
           style={{
             backgroundColor: style.colors.primary,
             color: style.colors.primaryForeground,
@@ -62,20 +62,20 @@ export function StyleCard({ style }: StyleCardProps) {
       </div>
 
       {/* Description */}
-      <p className="text-sm text-[#454c58] leading-relaxed mb-4 line-clamp-2 font-body">
+      <p className="text-sm text-[#9499ad] leading-relaxed mb-4 line-clamp-2 font-body">
         {style.description}
       </p>
 
       {/* Mini Color Palette Swatches */}
       <div className="mb-4 space-y-1.5">
-        <span className="text-[11px] uppercase tracking-wider font-semibold text-[#454c58]/80 block">
+        <span className="text-[11px] uppercase tracking-wider font-semibold text-[#9499ad]/80 block">
           Palette Swatches
         </span>
         <div className="flex items-center gap-1.5">
           {palettePreview.map((c, i) => (
             <div
               key={i}
-              className="flex-1 h-6 rounded-[6px] border border-[#dde0e6] relative group/swatch transition-transform duration-160 hover:scale-105"
+              className="flex-1 h-6 rounded-md border border-white/[0.1] relative group/swatch transition-transform duration-160 hover:scale-105"
               style={{ backgroundColor: c.hex }}
               title={`${c.label}: ${c.hex}`}
             >
@@ -90,7 +90,7 @@ export function StyleCard({ style }: StyleCardProps) {
         {style.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="text-[12px] text-[#454c58] bg-[#f3f4f6] px-2.5 py-0.5 rounded-md border border-[#dde0e6]"
+            className="text-xs text-[#9499ad] bg-white/[0.04] px-2.5 py-0.5 rounded-md border border-white/[0.08]"
           >
             {tag}
           </span>
@@ -98,10 +98,10 @@ export function StyleCard({ style }: StyleCardProps) {
       </div>
 
       {/* Card Footer Actions */}
-      <div className="mt-auto pt-4 border-t border-[#dde0e6] flex items-center justify-between">
+      <div className="mt-auto pt-4 border-t border-white/[0.08] flex items-center justify-between">
         <Link
           href={`/styles/${style.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#074ce0] hover:underline transition-colors"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#818cf8] hover:text-white transition-colors"
         >
           <span>Explore System</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform duration-160 group-hover:translate-x-0.5" />
@@ -110,7 +110,7 @@ export function StyleCard({ style }: StyleCardProps) {
         <div className="flex items-center gap-2">
           <Link
             href={`/customize/${style.slug}`}
-            className="text-xs font-medium text-[#454c58] hover:text-[#074ce0] bg-[#f3f4f6] hover:bg-[#e9ecf2] px-2.5 py-1 rounded-[6px] flex items-center gap-1 transition-colors"
+            className="text-xs font-medium text-[#9499ad] hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] px-2.5 py-1 rounded-md flex items-center gap-1 transition-colors"
             title="Open Visual Customizer"
           >
             <SlidersHorizontal className="w-3 h-3" />
@@ -119,7 +119,7 @@ export function StyleCard({ style }: StyleCardProps) {
 
           <Link
             href={`/export/${style.slug}`}
-            className="text-xs font-medium text-[#074ce0] bg-[#074ce0]/10 hover:bg-[#074ce0]/15 px-2.5 py-1 rounded-[6px] flex items-center gap-1 transition-colors"
+            className="text-xs font-medium text-[#818cf8] hover:text-white bg-[#5e6ad2]/15 hover:bg-[#5e6ad2]/25 border border-[#5e6ad2]/30 px-2.5 py-1 rounded-md flex items-center gap-1 transition-colors"
             title="Export Tokens"
           >
             <Download className="w-3 h-3" />

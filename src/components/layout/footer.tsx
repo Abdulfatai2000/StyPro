@@ -7,50 +7,50 @@ export function Footer() {
   const currentYear = 2026;
 
   return (
-    <footer className="w-full border-t border-white/[0.08] bg-[#16191f] text-[#d0d4dd] mt-auto font-body text-[14px]">
+    <footer className="w-full border-t border-white/[0.08] bg-[#060709] text-[#9499ad] mt-auto font-body text-sm">
       <PageContainer>
         <div className="py-14 md:py-16 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Presentation */}
           <div className="md:col-span-2 space-y-4">
-            <Logo variant="stacked" size="md" isDark className="!items-start !text-left" />
-            <p className="text-sm text-[#d0d4dd] max-w-sm leading-relaxed">
+            <Logo variant="stacked" size="md" className="!items-start !text-left" />
+            <p className="text-sm text-[#9499ad] max-w-sm leading-relaxed">
               StyPro bridges the gap between visual inspiration and production frontend code. Discover curated design systems, inspect real component behavior, and generate battle-tested AI coding prompts.
             </p>
-            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#074ce0]">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#818cf8]">
               <span>Discover</span>
-              <span className="text-[#454c58]">•</span>
+              <span className="text-white/[0.2]">•</span>
               <span>Preview</span>
-              <span className="text-[#454c58]">•</span>
+              <span className="text-white/[0.2]">•</span>
               <span>Customize</span>
-              <span className="text-[#454c58]">•</span>
+              <span className="text-white/[0.2]">•</span>
               <span>Generate</span>
-              <span className="text-[#454c58]">•</span>
+              <span className="text-white/[0.2]">•</span>
               <span>Export</span>
             </div>
           </div>
 
           {/* Directory Column 1: Featured Systems */}
           <div className="space-y-3">
-            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#fcfcfd]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Curated Systems
             </h4>
-            <ul className="space-y-2 text-sm text-[#d0d4dd]">
-              <li>
-                <Link
-                  href="/styles/corporate-clean"
-                  className="hover:text-white transition-colors flex items-center justify-between"
-                >
-                  <span>Corporate Clean SaaS</span>
-                  <span className="text-xs text-[#074ce0]">View →</span>
-                </Link>
-              </li>
+            <ul className="space-y-2 text-sm text-[#9499ad]">
               <li>
                 <Link
                   href="/styles/modern-dark"
                   className="hover:text-white transition-colors flex items-center justify-between"
                 >
                   <span>Modern Dark</span>
-                  <span className="text-xs text-[#074ce0]">View →</span>
+                  <span className="text-xs text-[#818cf8]">View →</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/styles/corporate-clean"
+                  className="hover:text-white transition-colors flex items-center justify-between"
+                >
+                  <span>Corporate Clean SaaS</span>
+                  <span className="text-xs text-[#818cf8]">View →</span>
                 </Link>
               </li>
               <li>
@@ -59,13 +59,13 @@ export function Footer() {
                   className="hover:text-white transition-colors flex items-center justify-between"
                 >
                   <span>Swiss Minimalist</span>
-                  <span className="text-xs text-[#074ce0]">View →</span>
+                  <span className="text-xs text-[#818cf8]">View →</span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/explore"
-                  className="text-xs font-semibold text-[#074ce0] hover:underline pt-1 inline-block"
+                  className="text-xs font-semibold text-[#818cf8] hover:underline pt-1 inline-block"
                 >
                   Explore All 12 Styles →
                 </Link>
@@ -75,10 +75,10 @@ export function Footer() {
 
           {/* Directory Column 2: Navigation */}
           <div className="space-y-3">
-            <h4 className="text-[13px] font-bold uppercase tracking-wider text-[#fcfcfd]">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Navigation
             </h4>
-            <ul className="space-y-2 text-sm text-[#d0d4dd]">
+            <ul className="space-y-2 text-sm text-[#9499ad]">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
                   Home
@@ -103,17 +103,13 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Rule & Metadata Row */}
-        <div className="py-5 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#d0d4dd]">
-          <div className="flex items-center gap-2">
-            <span>© {currentYear} StyPro Platform.</span>
-            <span className="text-[#454c58]">•</span>
-            <span>Zero Backend • Complete Privacy</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span>W3C DTCG Standard</span>
-            <span className="text-[#454c58]">•</span>
-            <span>CSS Variables & Tailwind v4</span>
+        {/* Sub-footer */}
+        <div className="py-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#9499ad]">
+          <p>© {currentYear} StyPro. From Style to Prompt to Code.</p>
+          <div className="flex items-center gap-6">
+            <span>Built for AI Coding Assistants</span>
+            <span className="text-white/[0.2]">•</span>
+            <span>Zero Backend Dependency</span>
           </div>
         </div>
       </PageContainer>

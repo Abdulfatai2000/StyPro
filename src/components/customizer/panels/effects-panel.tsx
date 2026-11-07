@@ -31,10 +31,10 @@ export function EffectsPanel({
   return (
     <div className="space-y-6 font-sans">
       {/* Category Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-base font-bold text-[#16191f] font-display">Effects & Interaction Dynamics</h3>
-          <p className="text-xs text-[#454c58] mt-0.5">
+          <h3 className="text-base font-bold text-white font-display">Effects & Interaction Dynamics</h3>
+          <p className="text-xs text-[#9499ad] mt-0.5">
             Backdrop frosted glass, transition speeds, and accessibility.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function EffectsPanel({
           <button
             type="button"
             onClick={onResetCategory}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#074ce0] hover:text-white bg-[#074ce0]/10 hover:bg-[#074ce0] rounded-md border border-[#074ce0]/30 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#818cf8] hover:text-white bg-[#5e6ad2]/15 hover:bg-[#5e6ad2] rounded-md border border-[#5e6ad2]/30 transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset Effects</span>
@@ -54,8 +54,8 @@ export function EffectsPanel({
         {/* Backdrop Blur */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Backdrop Frosted Blur</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentBlur}</span>
+            <span className="font-semibold text-white">Backdrop Frosted Blur</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentBlur}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {['0px', '8px', '12px', '20px'].map((blur) => (
@@ -65,8 +65,8 @@ export function EffectsPanel({
                 onClick={() => onEffectsChange({ backdropBlur: blur })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentBlur === blur
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {blur === '0px' ? 'None (0px)' : blur}
@@ -77,7 +77,7 @@ export function EffectsPanel({
 
         {/* Transition Speed */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-[#16191f]">
+          <label className="block text-xs font-semibold text-white">
             Interaction Transition Duration
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -92,8 +92,8 @@ export function EffectsPanel({
                 onClick={() => onMotionChange({ transitionSpeed: speed.id as 'fast' | 'normal' | 'slow' })}
                 className={`py-2 px-2 text-xs rounded-md border transition-colors cursor-pointer font-medium ${
                   currentSpeed === speed.id && !isReducedMotion
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {speed.label}
@@ -103,16 +103,16 @@ export function EffectsPanel({
         </div>
 
         {/* Accessibility: Reduced Motion */}
-        <div className="pt-2 border-t border-[#dde0e6]">
-          <div className="flex items-center justify-between p-3 rounded-lg border border-[#dde0e6] bg-white">
+        <div className="pt-2 border-t border-white/[0.08]">
+          <div className="flex items-center justify-between p-3 rounded-lg border border-white/[0.08] bg-white/[0.03]">
             <div className="space-y-0.5">
               <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span className="text-xs font-semibold text-[#16191f]">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span className="text-xs font-semibold text-white">
                   Respect Reduced Motion
                 </span>
               </div>
-              <p className="text-xs text-[#454c58]">
+              <p className="text-xs text-[#9499ad]">
                 Disables transitions and animations for motion sensitivity
               </p>
             </div>
@@ -120,7 +120,7 @@ export function EffectsPanel({
               type="button"
               onClick={() => onMotionChange({ reducedMotion: !isReducedMotion })}
               className={`w-11 h-6 rounded-full p-0.5 transition-colors cursor-pointer ${
-                isReducedMotion ? 'bg-[#074ce0]' : 'bg-[#dde0e6]'
+                isReducedMotion ? 'bg-[#5e6ad2]' : 'bg-white/[0.1]'
               }`}
             >
               <div

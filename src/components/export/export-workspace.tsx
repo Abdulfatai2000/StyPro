@@ -73,30 +73,30 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
   const sizeFormatted = (byteSize / 1024).toFixed(1) + ' KB';
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#fcfcfd] text-[#16191f] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#08090c] text-[#f4f5f8] font-sans">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full border-b border-[#dde0e6] bg-[#fcfcfd]/95 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3">
+      <header className="sticky top-0 z-40 w-full border-b border-white/[0.08] bg-[#08090c]/90 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Back links */}
           <div className="flex items-center gap-4">
             <Link
               href={`/customize/${baseStyle.slug}`}
-              className="flex items-center gap-1.5 text-xs text-[#454c58] hover:text-[#16191f] font-medium transition-colors"
+              className="flex items-center gap-1.5 text-xs text-[#9499ad] hover:text-white font-medium transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Customizer</span>
             </Link>
 
-            <div className="h-4 w-px bg-[#dde0e6] hidden sm:block" />
+            <div className="h-4 w-px bg-white/[0.08] hidden sm:block" />
 
             <div className="flex items-center gap-2">
-              <h1 className="text-sm font-bold text-[#16191f] font-display">{baseStyle.name}</h1>
-              <span className="text-xs text-[#454c58]">
+              <h1 className="text-sm font-bold text-white font-display">{baseStyle.name}</h1>
+              <span className="text-xs text-[#9499ad]">
                 Export Hub
               </span>
               {isCustomized && (
-                <span className="text-xs px-2.5 py-0.5 bg-[#074ce0]/10 text-[#074ce0] border border-[#074ce0]/20 rounded-full font-semibold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+                <span className="text-xs px-2.5 py-0.5 bg-[#5e6ad2]/15 text-[#818cf8] border border-[#5e6ad2]/30 rounded-full font-semibold flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" />
                   {overrideCount} Modified
                 </span>
               )}
@@ -110,7 +110,7 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
               onClick={handleCopy}
               className="btn-secondary text-xs !py-1.5 !px-3"
             >
-              {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+              {isCopied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{isCopied ? 'Copied Code!' : 'Copy Code'}</span>
             </button>
 
@@ -141,34 +141,34 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
                 key={target.id}
                 type="button"
                 onClick={() => setSelectedFormat(target.id)}
-                className={`software-card p-5 text-left transition-all cursor-pointer relative bg-white ${
+                className={`linear-card p-5 text-left transition-all cursor-pointer relative ${
                   isSelected
-                    ? '!border-[#074ce0] ring-2 ring-[#074ce0]/20 shadow-md'
-                    : 'hover:border-[#074ce0]'
+                    ? '!border-[#5e6ad2] bg-[#5e6ad2]/10 ring-1 ring-[#5e6ad2]/40 shadow-md'
+                    : 'hover:border-white/[0.16]'
                 }`}
               >
                 <div className="flex items-center justify-between mb-3">
                   <div
                     className={`px-2.5 py-1 rounded-md text-xs font-mono font-bold border ${
                       isSelected
-                        ? 'border-[#074ce0] bg-[#074ce0] text-white'
-                        : 'border-[#dde0e6] bg-[#f3f4f6] text-[#454c58]'
+                        ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white'
+                        : 'border-white/[0.08] bg-white/[0.04] text-[#9499ad]'
                     }`}
                   >
                     {target.extension}
                   </div>
                   {isSelected && (
-                    <span className="text-xs text-[#074ce0] font-semibold flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+                    <span className="text-xs text-[#818cf8] font-semibold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" />
                       Selected
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-sm font-bold text-[#16191f] mb-1">
+                <h3 className="text-sm font-bold text-white mb-1">
                   {target.label}
                 </h3>
-                <p className="text-xs text-[#454c58] leading-relaxed line-clamp-2">
+                <p className="text-xs text-[#9499ad] leading-relaxed line-clamp-2">
                   {target.description}
                 </p>
               </button>
@@ -178,24 +178,24 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
 
         {/* Format-specific sub-options */}
         {selectedFormat === 'tailwind' && (
-          <div className="software-card p-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="linear-card p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="space-y-0.5">
-              <span className="text-sm font-bold text-[#16191f]">
+              <span className="text-sm font-bold text-white">
                 Tailwind Architecture Target
               </span>
-              <p className="text-xs text-[#454c58]">
+              <p className="text-xs text-[#9499ad]">
                 Choose between modern CSS-first Tailwind v4 @theme or classic Tailwind v3 config
               </p>
             </div>
 
-            <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
+            <div className="flex items-center gap-1 bg-white/[0.04] p-1 rounded-lg border border-white/[0.08]">
               <button
                 type="button"
                 onClick={() => setTailwindVersion('v4')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                   tailwindVersion === 'v4'
-                    ? 'bg-[#074ce0] text-white shadow-xs'
-                    : 'text-[#454c58] hover:text-[#16191f]'
+                    ? 'bg-[#5e6ad2] text-white shadow-xs'
+                    : 'text-[#9499ad] hover:text-white'
                 }`}
               >
                 Tailwind v4 (@theme)
@@ -205,8 +205,8 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
                 onClick={() => setTailwindVersion('v3')}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
                   tailwindVersion === 'v3'
-                    ? 'bg-[#074ce0] text-white shadow-xs'
-                    : 'text-[#454c58] hover:text-[#16191f]'
+                    ? 'bg-[#5e6ad2] text-white shadow-xs'
+                    : 'text-[#9499ad] hover:text-white'
                 }`}
               >
                 Tailwind v3 (config.ts)
@@ -216,21 +216,21 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
         )}
 
         {/* Code Viewer Container */}
-        <div className="software-card bg-white overflow-hidden shadow-sm">
+        <div className="linear-card overflow-hidden shadow-2xl">
           {/* Viewer Titlebar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-[#dde0e6] bg-[#fcfcfd]">
+          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-white/[0.08] bg-[#0a0c10]">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#f87171] inline-block" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#fbbf24] inline-block" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#34d399] inline-block" />
               </div>
-              <span className="text-xs font-mono text-[#16191f] font-bold">
+              <span className="text-xs font-mono text-white font-bold">
                 {exportResult.filename}
               </span>
             </div>
 
-            <div className="flex items-center gap-4 text-xs font-mono text-[#454c58]">
+            <div className="flex items-center gap-4 text-xs font-mono text-[#9499ad]">
               <span>{lineCount} lines</span>
               <span>{sizeFormatted}</span>
               <span>{selectedFormat.toUpperCase()}</span>
@@ -238,16 +238,16 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
           </div>
 
           {/* Code Viewer Area */}
-          <div className="p-4 bg-[#f8f9fa]">
-            <pre className="w-full max-h-[600px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-[#dde0e6] bg-[#16191f] text-[#fcfcfd] whitespace-pre-wrap selection:bg-[#074ce0]/40">
+          <div className="p-4 bg-[#08090c]">
+            <pre className="w-full max-h-[600px] overflow-y-auto p-4 font-mono text-xs leading-relaxed rounded-lg border border-white/[0.08] bg-[#0c0d12] text-[#f4f5f8] whitespace-pre-wrap selection:bg-[#5e6ad2]/40">
               {exportResult.code}
             </pre>
           </div>
 
           {/* Viewer Footer Guidance */}
-          <div className="px-4 py-3 border-t border-[#dde0e6] bg-[#fcfcfd] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-[#454c58]">
+          <div className="px-4 py-3 border-t border-white/[0.08] bg-[#0a0c10] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-[#9499ad]">
             <div className="flex items-center gap-1.5">
-              <FileCode className="w-4 h-4 text-[#074ce0]" />
+              <FileCode className="w-4 h-4 text-[#818cf8]" />
               <span>
                 {currentTarget.description}
               </span>
@@ -256,7 +256,7 @@ export function ExportWorkspace({ baseStyle }: ExportWorkspaceProps) {
             <button
               type="button"
               onClick={handleDownload}
-              className="text-[#074ce0] font-semibold hover:underline flex items-center gap-1 cursor-pointer"
+              className="text-[#818cf8] font-semibold hover:underline flex items-center gap-1 cursor-pointer"
             >
               <span>Download {currentTarget.extension}</span>
               <Download className="w-3.5 h-3.5" />

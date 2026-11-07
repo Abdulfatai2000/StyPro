@@ -8,11 +8,11 @@ interface LogoProps {
   isDark?: boolean;
 }
 
-export function Logo({ variant = 'horizontal', className = '', size = 'md', isDark = false }: LogoProps) {
+export function Logo({ variant = 'horizontal', className = '', size = 'md' }: LogoProps) {
   const iconSizes = {
     sm: 'w-7 h-7',
     md: 'w-8 h-8',
-    lg: 'w-10 h-10',
+    lg: 'w-9 h-9',
   };
 
   const textSizes = {
@@ -22,25 +22,29 @@ export function Logo({ variant = 'horizontal', className = '', size = 'md', isDa
   };
 
   const mark = (
-    <div className={`relative flex items-center justify-center ${iconSizes[size]} transition-transform duration-160 hover:scale-105`}>
+    <div className={`relative flex items-center justify-center ${iconSizes[size]} transition-transform duration-160 hover:scale-105 shrink-0`}>
       <svg
         viewBox="0 0 36 36"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-sm"
+        className="w-full h-full drop-shadow-[0_0_12px_rgba(94,106,210,0.4)]"
       >
-        {/* Soft rounded gradient tile */}
         <rect
           x="1"
           y="1"
           width="34"
           height="34"
           rx="10"
-          fill={isDark ? '#1f242d' : '#074ce0'}
-          stroke={isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(7, 76, 224, 0.2)'}
-          strokeWidth="1.5"
+          fill="url(#stypro-gradient)"
+          stroke="rgba(255, 255, 255, 0.2)"
+          strokeWidth="1"
         />
-        {/* Converging modern design-to-code nexus paths */}
+        <defs>
+          <linearGradient id="stypro-gradient" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#5e6ad2" />
+            <stop offset="1" stopColor="#4338ca" />
+          </linearGradient>
+        </defs>
         <path
           d="M11 13L16 18L11 23"
           stroke="#ffffff"
@@ -50,7 +54,7 @@ export function Logo({ variant = 'horizontal', className = '', size = 'md', isDa
         />
         <path
           d="M25 13L20 18L25 23"
-          stroke={isDark ? '#074ce0' : '#8ab4f8'}
+          stroke="#c7d2fe"
           strokeWidth="2.25"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -64,14 +68,14 @@ export function Logo({ variant = 'horizontal', className = '', size = 'md', isDa
     return (
       <Link
         href="/"
-        className={`group inline-flex flex-col items-center gap-2 transition-opacity hover:opacity-90 ${className}`}
+        className={`group inline-flex flex-col items-center gap-2 transition-opacity hover:opacity-95 ${className}`}
       >
         {mark}
         <div className="flex flex-col items-center text-center">
-          <span className={`font-bold tracking-tight font-display ${isDark ? 'text-[#fcfcfd]' : 'text-[#16191f]'} ${textSizes[size]}`}>
-            Sty<span className="text-[#074ce0]">Pro</span>
+          <span className={`font-bold tracking-tight text-white font-display ${textSizes[size]}`}>
+            Sty<span className="text-[#818cf8]">Pro</span>
           </span>
-          <span className={`text-[12px] font-medium tracking-wide ${isDark ? 'text-[#d0d4dd]' : 'text-[#454c58]'}`}>
+          <span className="text-xs text-[#9499ad] tracking-wide">
             From Style to Prompt to Code
           </span>
         </div>
@@ -82,12 +86,12 @@ export function Logo({ variant = 'horizontal', className = '', size = 'md', isDa
   return (
     <Link
       href="/"
-      className={`group inline-flex items-center gap-2.5 transition-opacity hover:opacity-90 ${className}`}
+      className={`group inline-flex items-center gap-2.5 transition-opacity hover:opacity-95 ${className}`}
     >
       {mark}
-      <div className="flex flex-col">
-        <span className={`font-bold tracking-tight font-display ${isDark ? 'text-[#fcfcfd]' : 'text-[#16191f]'} ${textSizes[size]}`}>
-          Sty<span className="text-[#074ce0]">Pro</span>
+      <div className="flex items-center gap-1.5">
+        <span className={`font-bold tracking-tight text-white font-display ${textSizes[size]}`}>
+          Sty<span className="text-[#818cf8]">Pro</span>
         </span>
       </div>
     </Link>

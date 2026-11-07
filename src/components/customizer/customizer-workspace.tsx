@@ -89,7 +89,7 @@ export function CustomizerWorkspace({ baseStyle }: CustomizerWorkspaceProps) {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#fcfcfd] text-[#16191f] font-sans">
+    <div className="flex flex-col min-h-screen bg-[#08090c] text-[#f4f5f8] font-sans">
       {/* Top Header */}
       <CustomizerHeader
         style={baseStyle}
@@ -112,9 +112,9 @@ export function CustomizerWorkspace({ baseStyle }: CustomizerWorkspaceProps) {
       ) : (
         <main className="flex-1 grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-65px)]">
           {/* LEFT PANEL: Customization Controls (4 cols on lg) */}
-          <section className="lg:col-span-4 border-r border-[#dde0e6] bg-[#fcfcfd] flex flex-col h-auto lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px] overflow-hidden">
+          <section className="lg:col-span-4 border-r border-white/[0.08] bg-[#0c0d12] flex flex-col h-auto lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px] overflow-hidden">
             {/* Category Selector Tabs */}
-            <div className="flex items-center gap-1.5 p-2.5 border-b border-[#dde0e6] bg-[#fcfcfd] overflow-x-auto scrollbar-none">
+            <div className="flex items-center gap-1.5 p-2.5 border-b border-white/[0.08] bg-[#0c0d12] overflow-x-auto scrollbar-none">
               {categories.map((cat) => {
                 const Icon = cat.icon;
                 const isSelected = activeCategory === cat.id;
@@ -126,14 +126,14 @@ export function CustomizerWorkspace({ baseStyle }: CustomizerWorkspaceProps) {
                     onClick={() => setActiveCategory(cat.id)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-md whitespace-nowrap transition-colors cursor-pointer border ${
                       isSelected
-                        ? 'bg-[#074ce0] text-white border-[#074ce0]'
-                        : 'text-[#454c58] hover:text-[#16191f] border-transparent hover:bg-[#f3f4f6]'
+                        ? 'bg-[#5e6ad2] text-white border-[#5e6ad2]'
+                        : 'text-[#9499ad] hover:text-white border-transparent hover:bg-white/[0.04]'
                     }`}
                   >
                     <Icon className="w-3.5 h-3.5" />
                     <span>{cat.label}</span>
                     {isCatDirty && (
-                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-[#074ce0]'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-white' : 'bg-[#818cf8]'}`} />
                     )}
                   </button>
                 );
@@ -230,34 +230,34 @@ export function CustomizerWorkspace({ baseStyle }: CustomizerWorkspaceProps) {
           </section>
 
           {/* CENTER PANEL: Live Design Preview (5 cols on lg) */}
-          <section className="lg:col-span-5 p-4 sm:p-6 overflow-y-auto bg-[#f3f4f6]/50">
+          <section className="lg:col-span-5 p-4 sm:p-6 overflow-y-auto bg-[#08090c]">
             <div className="space-y-4">
-              <div className="flex items-center justify-between pb-2 border-b border-[#dde0e6]">
+              <div className="flex items-center justify-between pb-2 border-b border-white/[0.08]">
                 <div>
-                  <h2 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
+                  <h2 className="text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
                     Realtime Preview Canvas
                   </h2>
-                  <p className="text-xs text-[#454c58] mt-0.5">
+                  <p className="text-xs text-[#9499ad] mt-0.5">
                     Reflects active token overrides immediately
                   </p>
                 </div>
                 {isDirty && (
-                  <span className="text-xs font-semibold text-[#074ce0] bg-[#074ce0]/10 px-2.5 py-0.5 rounded-full border border-[#074ce0]/20 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" />
+                  <span className="text-xs font-semibold text-[#818cf8] bg-[#5e6ad2]/15 px-2.5 py-0.5 rounded-full border border-[#5e6ad2]/30 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" />
                     Live Overrides
                   </span>
                 )}
               </div>
 
-              {/* The Live Preview rendered with the resolved custom tokens! */}
-              <div className="rounded-xl overflow-hidden shadow-sm border border-[#dde0e6]">
+              {/* The Live Preview rendered with the resolved custom tokens */}
+              <div className="rounded-xl overflow-hidden shadow-2xl border border-white/[0.1]">
                 <StylePreview style={resolvedStyle} />
               </div>
             </div>
           </section>
 
           {/* RIGHT PANEL: Design Context & Diff Inspector (3 cols on lg) */}
-          <aside className="lg:col-span-3 border-l border-[#dde0e6] bg-[#fcfcfd] p-5 h-auto lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px] overflow-y-auto">
+          <aside className="lg:col-span-3 border-l border-white/[0.08] bg-[#0c0d12] p-5 h-auto lg:h-[calc(100vh-65px)] lg:sticky lg:top-[65px] overflow-y-auto">
             <TokenInspector
               baseStyle={baseStyle}
               overrides={overrides}

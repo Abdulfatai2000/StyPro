@@ -9,11 +9,11 @@ interface StyleHeaderProps {
 
 export function StyleHeader({ style }: StyleHeaderProps) {
   return (
-    <div className="space-y-6 pb-8 border-b border-[#dde0e6]">
+    <div className="space-y-6 pb-8 border-b border-white/[0.08]">
       {/* Back button */}
       <Link
         href="/explore"
-        className="inline-flex items-center gap-1.5 text-sm text-[#454c58] hover:text-[#16191f] font-medium transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-[#9499ad] hover:text-white font-medium transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Back to catalogue</span>
@@ -22,25 +22,25 @@ export function StyleHeader({ style }: StyleHeaderProps) {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="space-y-3 max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-[#074ce0] bg-[#074ce0]/10 px-3 py-1 rounded-full border border-[#074ce0]/20">
+            <span className="text-xs font-semibold text-[#818cf8] bg-[#5e6ad2]/15 px-3 py-1 rounded-full border border-[#5e6ad2]/30">
               {style.category}
             </span>
             {style.isFeatured && (
-              <span className="text-xs font-semibold text-white bg-[#074ce0] px-3 py-1 rounded-full flex items-center gap-1">
+              <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full flex items-center gap-1 border border-emerald-500/25">
                 <Sparkles className="w-3.5 h-3.5" />
                 Featured Style
               </span>
             )}
-            <span className="text-xs text-[#454c58] font-mono">
+            <span className="text-xs text-[#9499ad] font-mono">
               id: {style.slug}
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#16191f] font-display leading-[1.1]">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white font-display leading-[1.1]">
             {style.name}
           </h1>
 
-          <p className="text-base text-[#454c58] leading-[1.6]">
+          <p className="text-base text-[#9499ad] leading-[1.6]">
             {style.tagline}
           </p>
         </div>
@@ -51,7 +51,7 @@ export function StyleHeader({ style }: StyleHeaderProps) {
             href={`/customize/${style.slug}`}
             className="btn-secondary text-sm"
           >
-            <SlidersHorizontal className="w-4 h-4 text-[#074ce0]" />
+            <SlidersHorizontal className="w-4 h-4 text-[#818cf8]" />
             <span>Customize Style</span>
           </Link>
 
@@ -59,7 +59,7 @@ export function StyleHeader({ style }: StyleHeaderProps) {
             href={`/export/${style.slug}`}
             className="btn-secondary text-sm"
           >
-            <Download className="w-4 h-4 text-[#074ce0]" />
+            <Download className="w-4 h-4 text-[#818cf8]" />
             <span>Export Tokens</span>
           </Link>
 

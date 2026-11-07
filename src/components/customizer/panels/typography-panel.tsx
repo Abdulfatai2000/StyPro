@@ -21,11 +21,10 @@ export function TypographyPanel({
   isDirty,
 }: TypographyPanelProps) {
   const fontOptions = [
-    { label: 'Host Grotesk (Tight Display)', value: 'Host Grotesk, -apple-system, sans-serif' },
-    { label: 'Instrument Sans (Legible Body)', value: 'Instrument Sans, -apple-system, sans-serif' },
-    { label: 'Inter (Technical SaaS)', value: 'Inter, -apple-system, sans-serif' },
+    { label: 'Inter (Technical SaaS & Interface)', value: 'Inter, -apple-system, sans-serif' },
+    { label: 'Geist Sans (Clean Geometric)', value: 'var(--font-geist-sans), Inter, sans-serif' },
     { label: 'Helvetica Neue (Swiss Editorial)', value: 'Helvetica Neue, Arial, sans-serif' },
-    { label: 'System Monospace (Code Specimen)', value: 'JetBrains Mono, Menlo, monospace' },
+    { label: 'JetBrains Mono (Code Specimen)', value: 'JetBrains Mono, Menlo, monospace' },
   ];
 
   const currentHeadingFont = typographyOverrides.headingFont || baseTypography.headingFont;
@@ -37,10 +36,10 @@ export function TypographyPanel({
   return (
     <div className="space-y-6 font-sans">
       {/* Category Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-base font-bold text-[#16191f] font-display">Typography System</h3>
-          <p className="text-xs text-[#454c58] mt-0.5">
+          <h3 className="text-base font-bold text-white font-display">Typography System</h3>
+          <p className="text-xs text-[#9499ad] mt-0.5">
             Select fonts, weights, and vertical spacing scale.
           </p>
         </div>
@@ -48,7 +47,7 @@ export function TypographyPanel({
           <button
             type="button"
             onClick={onResetCategory}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#074ce0] hover:text-white bg-[#074ce0]/10 hover:bg-[#074ce0] rounded-md border border-[#074ce0]/30 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#818cf8] hover:text-white bg-[#5e6ad2]/15 hover:bg-[#5e6ad2] rounded-md border border-[#5e6ad2]/30 transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3 h-3" />
             <span>Reset Typography</span>
@@ -59,16 +58,16 @@ export function TypographyPanel({
       <div className="space-y-5">
         {/* Heading Font */}
         <div className="space-y-1.5">
-          <label className="block text-xs font-semibold text-[#16191f]">
+          <label className="block text-xs font-semibold text-white">
             Heading Font Family
           </label>
           <select
             value={currentHeadingFont}
             onChange={(e) => onChange({ headingFont: e.target.value })}
-            className="w-full text-xs p-2.5 rounded-lg bg-white border border-[#dde0e6] text-[#16191f] focus:border-[#074ce0] focus:outline-none cursor-pointer"
+            className="w-full text-xs p-2.5 rounded-lg bg-[#0c0d12] border border-white/[0.1] text-white focus:border-[#5e6ad2] focus:outline-none cursor-pointer"
           >
             {fontOptions.map((opt) => (
-              <option key={opt.label} value={opt.value}>
+              <option key={opt.label} value={opt.value} className="bg-[#0c0d12] text-white">
                 {opt.label}
               </option>
             ))}
@@ -77,16 +76,16 @@ export function TypographyPanel({
 
         {/* Body Font */}
         <div className="space-y-1.5">
-          <label className="block text-xs font-semibold text-[#16191f]">
+          <label className="block text-xs font-semibold text-white">
             Body Font Family
           </label>
           <select
             value={currentBodyFont}
             onChange={(e) => onChange({ bodyFont: e.target.value })}
-            className="w-full text-xs p-2.5 rounded-lg bg-white border border-[#dde0e6] text-[#16191f] focus:border-[#074ce0] focus:outline-none cursor-pointer"
+            className="w-full text-xs p-2.5 rounded-lg bg-[#0c0d12] border border-white/[0.1] text-white focus:border-[#5e6ad2] focus:outline-none cursor-pointer"
           >
             {fontOptions.map((opt) => (
-              <option key={opt.label} value={opt.value}>
+              <option key={opt.label} value={opt.value} className="bg-[#0c0d12] text-white">
                 {opt.label}
               </option>
             ))}
@@ -96,8 +95,8 @@ export function TypographyPanel({
         {/* Heading Weight */}
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
-            <span className="font-semibold text-[#16191f]">Heading Weight</span>
-            <span className="font-mono text-[#074ce0] font-bold">{currentHeadingWeight}</span>
+            <span className="font-semibold text-white">Heading Weight</span>
+            <span className="font-mono text-[#818cf8] font-bold">{currentHeadingWeight}</span>
           </div>
           <div className="grid grid-cols-4 gap-2">
             {[500, 600, 700, 800].map((weight) => (
@@ -107,8 +106,8 @@ export function TypographyPanel({
                 onClick={() => onChange({ headingWeight: weight })}
                 className={`py-2 text-xs font-mono rounded-md border transition-colors cursor-pointer ${
                   currentHeadingWeight === weight
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white font-bold'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white font-bold shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {weight}
@@ -119,7 +118,7 @@ export function TypographyPanel({
 
         {/* Line Height Scale */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-[#16191f]">
+          <label className="block text-xs font-semibold text-white">
             Line Height Rhythm
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -134,8 +133,8 @@ export function TypographyPanel({
                 onClick={() => onChange({ lineHeight: lh.id as 'tight' | 'normal' | 'relaxed' })}
                 className={`py-2 px-2 text-xs rounded-md border transition-colors cursor-pointer font-medium ${
                   currentLineHeight === lh.id
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {lh.label}
@@ -146,7 +145,7 @@ export function TypographyPanel({
 
         {/* Letter Spacing */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-[#16191f]">
+          <label className="block text-xs font-semibold text-white">
             Letter Spacing (Tracking)
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -161,8 +160,8 @@ export function TypographyPanel({
                 onClick={() => onChange({ letterSpacing: ls.id as 'tight' | 'normal' | 'wide' })}
                 className={`py-2 px-2 text-xs rounded-md border transition-colors cursor-pointer font-medium ${
                   currentLetterSpacing === ls.id
-                    ? 'border-[#074ce0] bg-[#074ce0] text-white'
-                    : 'border-[#dde0e6] bg-white text-[#454c58] hover:text-[#16191f]'
+                    ? 'border-[#5e6ad2] bg-[#5e6ad2] text-white shadow-xs'
+                    : 'border-white/[0.08] bg-white/[0.03] text-[#9499ad] hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {ls.label}

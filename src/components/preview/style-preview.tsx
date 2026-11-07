@@ -20,9 +20,9 @@ export function StylePreview({ style, initialTab = 'app' }: StylePreviewProps) {
   const cssVars = getStyleCssVariables(style);
 
   return (
-    <div className="w-full rounded-xl border border-[#dde0e6] bg-white overflow-hidden shadow-sm font-sans">
+    <div className="w-full rounded-xl border border-white/[0.1] bg-[#0e1017] overflow-hidden shadow-xl font-sans">
       {/* Window Titlebar / Chrome */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-[#dde0e6] bg-[#fcfcfd]">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-b border-white/[0.08] bg-[#0a0c10]">
         {/* Left window indicators & info */}
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
@@ -30,23 +30,23 @@ export function StylePreview({ style, initialTab = 'app' }: StylePreviewProps) {
             <span className="w-2.5 h-2.5 rounded-full bg-[#fbbf24] inline-block" />
             <span className="w-2.5 h-2.5 rounded-full bg-[#34d399] inline-block" />
           </div>
-          <span className="text-xs font-mono text-[#454c58] hidden sm:inline">
+          <span className="text-xs font-mono text-[#9499ad] hidden sm:inline">
             preview://{style.slug}
           </span>
-          <span className="text-xs px-2.5 py-0.5 rounded-full border border-[#dde0e6] bg-[#f3f4f6] text-[#16191f] font-semibold">
+          <span className="text-xs px-2.5 py-0.5 rounded-full border border-white/[0.08] bg-white/[0.04] text-white font-medium">
             {style.name}
           </span>
         </div>
 
         {/* View Switcher Tabs */}
-        <div className="flex items-center gap-1 bg-[#f3f4f6] p-1 rounded-lg border border-[#dde0e6]">
+        <div className="flex items-center gap-1 bg-white/[0.04] p-1 rounded-lg border border-white/[0.08]">
           <button
             type="button"
             onClick={() => setActiveTab('app')}
             className={`flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'app'
-                ? 'bg-[#074ce0] text-white shadow-xs'
-                : 'text-[#454c58] hover:text-[#16191f]'
+                ? 'bg-[#5e6ad2] text-white shadow-xs'
+                : 'text-[#9499ad] hover:text-white'
             }`}
           >
             <Eye className="w-3.5 h-3.5" />
@@ -57,8 +57,8 @@ export function StylePreview({ style, initialTab = 'app' }: StylePreviewProps) {
             onClick={() => setActiveTab('components')}
             className={`flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-md transition-colors cursor-pointer ${
               activeTab === 'components'
-                ? 'bg-[#074ce0] text-white shadow-xs'
-                : 'text-[#454c58] hover:text-[#16191f]'
+                ? 'bg-[#5e6ad2] text-white shadow-xs'
+                : 'text-[#9499ad] hover:text-white'
             }`}
           >
             <LayoutGrid className="w-3.5 h-3.5" />

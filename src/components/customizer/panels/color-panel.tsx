@@ -68,10 +68,10 @@ export function ColorPanel({
   return (
     <div className="space-y-6 font-sans">
       {/* Category Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-base font-bold text-[#16191f] font-display">Semantic Color Palette</h3>
-          <p className="text-xs text-[#454c58] mt-0.5">
+          <h3 className="text-base font-bold text-white font-display">Semantic Color Palette</h3>
+          <p className="text-xs text-[#9499ad] mt-0.5">
             Fine-tune hex colors. Changes immediately reflect in the preview.
           </p>
         </div>
@@ -79,7 +79,7 @@ export function ColorPanel({
           <button
             type="button"
             onClick={onResetCategory}
-            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#074ce0] hover:text-white bg-[#074ce0]/10 hover:bg-[#074ce0] rounded-md border border-[#074ce0]/30 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-semibold text-[#818cf8] hover:text-white bg-[#5e6ad2]/15 hover:bg-[#5e6ad2] rounded-md border border-[#5e6ad2]/30 transition-colors cursor-pointer"
             title="Reset colors to style defaults"
           >
             <RotateCcw className="w-3 h-3" />
@@ -92,7 +92,7 @@ export function ColorPanel({
       <div className="space-y-6">
         {tokenGroups.map((group, idx) => (
           <div key={idx} className="space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
               {group.group}
             </h4>
 
@@ -106,20 +106,20 @@ export function ColorPanel({
                 // Color picker needs standard 6-digit hex
                 const pickerValue = currentValue.startsWith('#') && currentValue.length >= 7
                   ? currentValue.substring(0, 7)
-                  : '#074ce0';
+                  : '#5e6ad2';
 
                 return (
                   <div
                     key={token}
                     className={`flex items-center justify-between p-2.5 rounded-lg border transition-all ${
                       isOverridden
-                        ? 'border-[#074ce0]/40 bg-[#074ce0]/5'
-                        : 'border-[#dde0e6] bg-white'
+                        ? 'border-[#5e6ad2]/40 bg-[#5e6ad2]/10'
+                        : 'border-white/[0.08] bg-white/[0.03]'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       {/* Native Color Picker wrapper */}
-                      <label className="relative w-8 h-8 rounded-md border border-black/10 overflow-hidden cursor-pointer shadow-xs shrink-0">
+                      <label className="relative w-8 h-8 rounded-md border border-white/[0.15] overflow-hidden cursor-pointer shadow-xs shrink-0">
                         <input
                           type="color"
                           value={pickerValue}
@@ -135,14 +135,14 @@ export function ColorPanel({
 
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-medium text-[#16191f] font-mono">
+                          <span className="text-xs font-medium text-white font-mono">
                             {token}
                           </span>
                           {isOverridden && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#074ce0]" title="Customized" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#818cf8]" title="Customized" />
                           )}
                         </div>
-                        <span className="text-[11px] text-[#454c58] font-mono">
+                        <span className="text-[11px] text-[#9499ad] font-mono">
                           Default: {baseColors[token]}
                         </span>
                       </div>
@@ -156,16 +156,16 @@ export function ColorPanel({
                           value={displayInput}
                           onChange={(e) => handleTextChange(token, e.target.value)}
                           maxLength={9}
-                          className={`w-24 px-2 py-1 text-xs font-mono uppercase rounded-md bg-[#fcfcfd] border text-center transition-colors focus:outline-none ${
+                          className={`w-24 px-2 py-1 text-xs font-mono uppercase rounded-md bg-[#0c0d12] border text-center transition-colors focus:outline-none ${
                             isInvalid
-                              ? 'border-red-500 text-red-600'
+                              ? 'border-red-500 text-red-400'
                               : isOverridden
-                              ? 'border-[#074ce0] text-[#074ce0] font-semibold'
-                              : 'border-[#dde0e6] text-[#16191f] focus:border-[#074ce0]'
+                              ? 'border-[#5e6ad2] text-[#818cf8] font-semibold'
+                              : 'border-white/[0.1] text-white focus:border-[#5e6ad2]'
                           }`}
                         />
                         {isInvalid && (
-                          <AlertCircle className="w-3 h-3 text-red-500 absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                          <AlertCircle className="w-3 h-3 text-red-400 absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                         )}
                       </div>
                     </div>

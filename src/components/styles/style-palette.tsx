@@ -58,10 +58,10 @@ export function StylePalette({ style }: StylePaletteProps) {
 
   return (
     <div className="space-y-6 font-sans">
-      <div className="flex items-center justify-between pb-3 border-b border-[#dde0e6]">
+      <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
         <div>
-          <h3 className="text-xl font-bold text-[#16191f] font-display">Semantic Color Tokens</h3>
-          <p className="text-sm text-[#454c58] mt-0.5">
+          <h3 className="text-xl font-bold text-white font-display">Semantic Color Tokens</h3>
+          <p className="text-sm text-[#9499ad] mt-0.5">
             Click any color swatch to copy its raw hex value to your clipboard
           </p>
         </div>
@@ -71,9 +71,9 @@ export function StylePalette({ style }: StylePaletteProps) {
         {tokenGroups.map((group, gIdx) => (
           <div
             key={gIdx}
-            className="software-card p-5 space-y-3.5 bg-white"
+            className="linear-card p-5 space-y-3.5"
           >
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#074ce0]">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
               {group.group}
             </h4>
 
@@ -85,27 +85,27 @@ export function StylePalette({ style }: StylePaletteProps) {
                     key={token.name}
                     type="button"
                     onClick={() => copyToClipboard(token.name, token.value)}
-                    className="w-full flex items-center justify-between p-2.5 rounded-lg border border-[#dde0e6] bg-[#fcfcfd] hover:bg-[#f3f4f6] hover:border-[#074ce0] transition-colors text-left cursor-pointer group"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.16] transition-colors text-left cursor-pointer group"
                     title={`Copy ${token.name} value`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <div
-                        className="w-5 h-5 rounded border border-black/10 shadow-xs shrink-0"
+                        className="w-5 h-5 rounded border border-white/[0.15] shadow-xs shrink-0"
                         style={{ backgroundColor: token.value }}
                       />
                       <div className="min-w-0">
-                        <div className="text-xs font-semibold text-[#16191f] truncate">
+                        <div className="text-xs font-semibold text-white truncate">
                           {token.label}
                         </div>
-                        <div className="text-[11px] text-[#454c58] font-mono">
+                        <div className="text-[11px] text-[#9499ad] font-mono">
                           {formatColor(token.value)}
                         </div>
                       </div>
                     </div>
 
-                    <div className="shrink-0 text-[#454c58] group-hover:text-[#074ce0] transition-colors">
+                    <div className="shrink-0 text-[#9499ad] group-hover:text-white transition-colors">
                       {isCopied ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
                       ) : (
                         <Copy className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100" />
                       )}
