@@ -154,3 +154,4 @@ export function isCategoryDirty(
   const cat = overrides[category];
   return cat ? Object.keys(cat).length > 0 : false;
 }
+

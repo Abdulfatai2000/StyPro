@@ -1,4 +1,4 @@
-import { DesignStyle, StyleColors } from './style';
+import { DesignStyle } from './style';
 
 export type CustomizerTab = 'customize' | 'prompt';
 
@@ -90,3 +90,4 @@ export interface CustomizerState {
   isDirty: boolean;
   dirtyCount: number;
 }
+
