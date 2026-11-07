@@ -38,3 +38,4 @@ export function getAllCategories(): { id: StyleCategory | 'all'; label: string }
 }
 
 export { modernDark, swissMinimalist };
+

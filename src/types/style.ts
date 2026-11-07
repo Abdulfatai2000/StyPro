@@ -184,3 +184,4 @@ export interface DesignStyle {
   interaction: StyleInteraction;
   componentRules: StyleComponentRules;
 }
+

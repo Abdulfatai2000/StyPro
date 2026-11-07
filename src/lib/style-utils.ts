@@ -66,3 +66,4 @@ export function formatColor(color: string): string {
   }
   return color;
 }
+
