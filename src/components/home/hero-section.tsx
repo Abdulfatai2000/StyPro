@@ -3,15 +3,25 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Compass, CheckCircle2 } from 'lucide-react';
-import { modernDark, swissMinimalist } from '@/data/styles';
+import {
+  modernDark,
+  swissMinimalist,
+  neoBrutalist,
+  cyberDeck,
+} from '@/data/styles';
 import { StylePreview } from '@/components/preview/style-preview';
 
-export function HeroSection() {
-  const [selectedPilot, setSelectedPilot] = useState<'modern-dark' | 'swiss-minimalist'>(
-    'modern-dark'
-  );
+const showcaseStyles = [
+  modernDark,
+  swissMinimalist,
+  neoBrutalist,
+  cyberDeck,
+];
 
-  const activeStyle = selectedPilot === 'modern-dark' ? modernDark : swissMinimalist;
+export function HeroSection() {
+  const [selectedSlug, setSelectedSlug] = useState<string>('modern-dark');
+
+  const activeStyle = showcaseStyles.find((s) => s.slug === selectedSlug) || modernDark;
 
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
@@ -22,8 +32,8 @@ export function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6 px-4">
         {/* Release / Category Pill */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.1] bg-[#090A0F]/90 backdrop-blur-sm text-xs font-mono text-[#9BA1B0] shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#5E6AD2] animate-pulse" />
-          <span>StyPro v1.0 — Design Systems for Modern Developers</span>
+          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+          <span>StyPro v1.0 — Discover. Customize. Prompt. Export.</span>
         </div>
 
         {/* Hero Title */}
@@ -36,7 +46,7 @@ export function HeroSection() {
 
         {/* Supporting Explanation */}
         <p className="text-base sm:text-lg md:text-xl text-[#9BA1B0] max-w-2xl mx-auto leading-relaxed">
-          Explore professional design systems, customize visual directions and turn your design decisions into implementation-ready prompts.
+          Explore 12 production-grade design systems, customize visual tokens with live feedback, generate deterministic AI prompts, and export clean CSS, Tailwind v4, DTCG JSON, and Markdown specs.
         </p>
 
         {/* Action Buttons */}
@@ -45,7 +55,7 @@ export function HeroSection() {
             href="/explore"
             className="inline-flex items-center gap-2 rounded-lg bg-[#5E6AD2] hover:bg-[#6E79D8] text-white px-5 py-3 text-sm font-semibold shadow-[0_0_25px_rgba(94,106,210,0.4)] transition-all duration-150 hover:shadow-[0_0_35px_rgba(94,106,210,0.6)]"
           >
-            <span>Explore Design Styles</span>
+            <span>Explore All 12 Styles</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <a
@@ -53,7 +63,7 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 rounded-lg border border-white/[0.12] bg-[#090A0F] hover:bg-white/[0.05] text-[#F4F5F8] px-5 py-3 text-sm font-semibold transition-colors"
           >
             <Compass className="w-4 h-4 text-[#5E6AD2]" />
-            <span>View Pilot Styles</span>
+            <span>View Featured Systems</span>
           </a>
         </div>
 
@@ -61,15 +71,19 @@ export function HeroSection() {
         <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-[#8C92A4]">
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            Data-Driven Token Specs
+            12 Distinct Design Systems
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            Realistic Component Previews
+            Live Reactive Preview
           </span>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 text-[#5E6AD2]" />
-            AI Prompt Ready Architecture
+            Deterministic AI Prompts
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />
+            4 Production Export Formats
           </span>
         </div>
       </div>
@@ -77,44 +91,44 @@ export function HeroSection() {
       {/* Interactive Hero Preview Demonstration */}
       <div className="relative z-10 max-w-5xl mx-auto mt-14 px-4">
         {/* Style Switcher Bar */}
-        <div className="flex items-center justify-between pb-3 px-2">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 px-2 gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs font-mono uppercase tracking-wider text-[#8C92A4]">
               Interactive Preview:
             </span>
-            <div className="flex items-center gap-1 bg-[#090A0F] p-1 rounded-lg border border-white/[0.08]">
-              <button
-                type="button"
-                onClick={() => setSelectedPilot('modern-dark')}
-                className={`px-3 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
-                  selectedPilot === 'modern-dark'
-                    ? 'bg-[#151824] text-[#F4F5F8]'
-                    : 'text-[#8C92A4] hover:text-[#F4F5F8]'
-                }`}
-              >
-                Modern Dark
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedPilot('swiss-minimalist')}
-                className={`px-3 py-1 rounded text-xs font-medium transition-colors cursor-pointer ${
-                  selectedPilot === 'swiss-minimalist'
-                    ? 'bg-[#151824] text-[#F4F5F8]'
-                    : 'text-[#8C92A4] hover:text-[#F4F5F8]'
-                }`}
-              >
-                Swiss Minimalist
-              </button>
+            <div className="flex items-center gap-1 bg-[#090A0F] p-1 rounded-lg border border-white/[0.08] overflow-x-auto">
+              {showcaseStyles.map((style) => (
+                <button
+                  key={style.slug}
+                  type="button"
+                  onClick={() => setSelectedSlug(style.slug)}
+                  className={`px-3 py-1 rounded text-xs font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                    selectedSlug === style.slug
+                      ? 'bg-[#151824] text-[#F4F5F8] shadow-sm'
+                      : 'text-[#8C92A4] hover:text-[#F4F5F8]'
+                  }`}
+                >
+                  {style.name}
+                </button>
+              ))}
             </div>
           </div>
 
-          <Link
-            href={`/styles/${activeStyle.slug}`}
-            className="text-xs text-[#5E6AD2] hover:underline flex items-center gap-1 font-mono"
-          >
-            <span>Inspect {activeStyle.name} tokens</span>
-            <ArrowRight className="w-3 h-3" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href={`/customize/${activeStyle.slug}`}
+              className="text-xs text-[#8C92A4] hover:text-[#F4F5F8] flex items-center gap-1 font-mono transition-colors"
+            >
+              <span>Customize</span>
+            </Link>
+            <Link
+              href={`/export/${activeStyle.slug}`}
+              className="text-xs text-[#10B981] hover:underline flex items-center gap-1 font-mono"
+            >
+              <span>Export Tokens</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+          </div>
         </div>
 
         {/* Live Preview Embed */}
@@ -123,4 +137,3 @@ export function HeroSection() {
     </section>
   );
 }
-

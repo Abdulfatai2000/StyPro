@@ -30,5 +30,6 @@
 | T06 | WP04: JSON/DTCG Export | DTCG standard JSON token serializer & tests | `src/lib/export/serializers/dtcg.ts`, `src/tests/export/dtcg-serializer.test.ts` | Complete | npm test (12/12 pass), tsc, lint | 655643f | Pushed |
 | T07 | WP05: Markdown Export | Markdown design-system serializer & export engine | `src/lib/export/serializers/markdown.ts`, `src/lib/export/index.ts`, `src/tests/export/markdown-serializer.test.ts` | Complete | npm test (15/15 pass), tsc, lint | 33f9d52 | Pushed |
 | T08 | WP06: Export Experience | Export workspace interface, client-side download utility & route /export/[slug] | `src/lib/export/download.ts`, `src/components/export/`, `src/app/export/[slug]/page.tsx` | Complete | tsc, lint, build | 525ac71 | Pushed |
-| T09 | WP07: Design Library Expansion | Expand design style catalogue to 12 distinct production systems with test suite | `src/data/styles/*.ts`, `src/tests/styles/style-catalogue.test.ts` | Complete | npm test (23/23 pass), tsc, lint, build (44/44 pages) | Pending | Pending |
+| T09 | WP07: Design Library Expansion | Expand design style catalogue to 12 distinct production systems with test suite | `src/data/styles/*.ts`, `src/tests/styles/style-catalogue.test.ts` | Complete | npm test (23/23 pass), tsc, lint, build (44/44 pages) | 1c739d7 | Pushed |
+| T10 | WP08: Discovery & Home Hub | Enhance explore cards with dynamic initials, export links, 3-column grid, and hero showcase | `src/components/explore/`, `src/components/home/` | Complete | npm test (23/23 pass), tsc, lint | Pending | Pending |
 

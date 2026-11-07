@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, SlidersHorizontal } from 'lucide-react';
+import { ArrowRight, Sparkles, SlidersHorizontal, Download } from 'lucide-react';
 import { DesignStyle } from '@/types/style';
 
 interface StyleCardProps {
@@ -8,7 +8,15 @@ interface StyleCardProps {
 }
 
 export function StyleCard({ style }: StyleCardProps) {
-  const isLight = style.slug === 'swiss-minimalist';
+  // Compute initials dynamically (e.g. "Modern Dark" -> "MD", "Paper & Ink" -> "PI")
+  const initials = style.name
+    .replace(/[^a-zA-Z0-9 ]/g, '')
+    .split(' ')
+    .filter(Boolean)
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
 
   // Key preview color tokens
   const palettePreview = [
@@ -49,7 +57,7 @@ export function StyleCard({ style }: StyleCardProps) {
             borderColor: style.colors.border,
           }}
         >
-          {isLight ? 'SW' : 'MD'}
+          {initials}
         </div>
       </div>
 
@@ -95,20 +103,30 @@ export function StyleCard({ style }: StyleCardProps) {
           href={`/styles/${style.slug}`}
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5E6AD2] hover:text-[#6E79D8] transition-colors"
         >
-          <span>Explore Design System</span>
+          <span>Explore</span>
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
         </Link>
 
-        <Link
-          href={`/customize/${style.slug}`}
-          className="text-[11px] font-mono text-[#5E6AD2] hover:text-[#6E79D8] flex items-center gap-1 transition-colors"
-          title="Open Visual Customizer"
-        >
-          <SlidersHorizontal className="w-3 h-3" />
-          <span>Customize</span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href={`/customize/${style.slug}`}
+            className="text-[11px] font-mono text-[#8C92A4] hover:text-[#5E6AD2] flex items-center gap-1 transition-colors"
+            title="Open Visual Customizer"
+          >
+            <SlidersHorizontal className="w-3 h-3" />
+            <span>Customize</span>
+          </Link>
+
+          <Link
+            href={`/export/${style.slug}`}
+            className="text-[11px] font-mono text-[#8C92A4] hover:text-[#10B981] flex items-center gap-1 transition-colors"
+            title="Export Design Tokens & Code"
+          >
+            <Download className="w-3 h-3" />
+            <span>Export</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
-

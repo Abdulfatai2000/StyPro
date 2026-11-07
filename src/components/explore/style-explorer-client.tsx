@@ -137,7 +137,7 @@ export function StyleExplorerClient({ initialStyles }: StyleExplorerClientProps)
 
       {/* Styles Grid or Empty State */}
       {filteredStyles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredStyles.map((style) => (
             <StyleCard key={style.id} style={style} />
           ))}

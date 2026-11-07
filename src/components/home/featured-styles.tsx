@@ -13,13 +13,13 @@ export function FeaturedStyles() {
         <div className="space-y-2 max-w-xl">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[#5E6AD2]">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Pilot Design Systems</span>
+            <span>Curated Design Systems</span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-[#F4F5F8]">
-            Curated Pilot Styles
+            Featured Design Languages
           </h2>
           <p className="text-sm text-[#8C92A4]">
-            Two radically distinct, production-grade design languages developed to test and establish the StyPro token engine.
+            Handcrafted, production-grade design systems spanning developer tools, fintech, neo-brutalism, spatial glass, and minimal typography.
           </p>
         </div>
 
@@ -27,12 +27,12 @@ export function FeaturedStyles() {
           href="/explore"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5E6AD2] hover:text-[#6E79D8] transition-colors"
         >
-          <span>Explore All Styles</span>
+          <span>Explore All 12 Styles</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featured.map((style) => (
           <StyleCard key={style.id} style={style} />
         ))}
@@ -40,4 +40,3 @@ export function FeaturedStyles() {
     </section>
   );
 }
-
