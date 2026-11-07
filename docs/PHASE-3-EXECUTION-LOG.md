@@ -34,3 +34,4 @@
 | T10 | WP08: Discovery & Home Hub | Enhance explore cards with dynamic initials, export links, 3-column grid, and hero showcase | `src/components/explore/`, `src/components/home/` | Complete | npm test (23/23 pass), tsc, lint | a6c733e | Pushed |
 | T11 | WP09: Production Documentation | Author comprehensive technical docs suite (Export formats, Token schema, Style library, Architecture, Testing) & production README | `docs/*.md`, `README.md` | Complete | markdown validation, cross-links | b7b1197 | Pushed |
 
+| T12 | WP10: Visual Design & Typography | Implement Software design system: Host Grotesk display, Instrument Sans body, professional font sizing, 1.45:1 hero split, 12px rounded cards, two substantial dark passages, electric blue (#074ce0) action accents across all routes | `src/app/`, `src/components/`, `globals.css` | Complete | npm test (23/23 pass), tsc (0 errors), lint (0 errors), build (44/44 prerendered) | e95868c | Pushed |
